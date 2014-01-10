@@ -94,7 +94,10 @@
           <h3>NOTES</h3>
           <p>If in any test case an error is expected as a response, then an empty response or no response for 30 seconds are also accepted.</p>
           <p>Unless otherwise stated, test users have no contacts, offline messages, or requests.</p>
-          <p>Although the sequence number, ip address, and date fields in test data are not explicitly specified, during the actual tests these values will be checked for correctness.</p>
+          <p>Although the sequence number, IP address, and date fields in test data are not explicitly specified, during the actual tests these values will be checked for correctness.</p>
+          <p>When an error happens, the client is expected to display an error message if the user needs to be notified, or do not display anything if the error needs to be handled silently</p>
+          <p>If a message is injected at any point in the test cases, it is expected that the client will not allow the user to perform that action at that point of the test (or ever) via the user interface</p>
+          <p>The Client UI might implement denying a request as ignoring the request while implementing the same functionality.</p> 
         </div>
         <div id="dynamicView" class="span9 contentView" style="display: none;"></div>
       </div>  

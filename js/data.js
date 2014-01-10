@@ -645,12 +645,43 @@ var tests =
     ]
   },
   
+  "FIND-5": 
+  {
+    title: "Searching For Users 5",
+    caseId: "FIND-4",
+    rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
+    description: "Search and find other users",
+    target: "Server, Client",
+    preConditions: ["JOHN is logged in", "JAMES is registered", "MARK is registered", "JESSICA is registered", "CASSANDRA is registered"],
+    dependencies: ["LOGIN-OK"],
+    steps: [
+      {
+        description: "Enter search keyword",
+        data: "",
+        expected: null
+      },
+      {
+        description: "Click Find User button",
+        data: "#1",
+        expected: "All of the mentioned users are returned"
+      }
+    ],
+    postConditions: ["All of the mentioned users are found with search"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CFINDU\n{\n  "seqid": xxxx,\n  "keyword":  ""\n}',
+        response: 'SRVROK\n{\n  "seqid": xxxx,\n  "matches": [\n    {\n      "userid": "foobar",\n      "profile": {\n        "message": "",\n        "location": "",\n        "gender": "",\n        "nationality": ""\n      }\n    },\n    {\n      "userid": "james",\n      "profile": {\n        "message": "livin la vida loca",\n        "location": "the moon",\n        "gender": "M",\n        "nationality": "Turkish"\n      }\n    }\n    {\n      "userid": "mark",\n      "profile": {\n        "message": "I am Mark",\n        "location": "",\n        "gender": "M",\n        "nationality": ""\n      }\n    },\n    {\n      "userid": "jessica",\n      "profile": {\n        "message": "",\n        "location": "",\n        "gender": "",\n        "nationality": ""\n      }\n    },\n    {\n      "userid": "cassandra",\n      "profile": {\n        "message": "",\n        "location": "",\n        "gender": "",\n        "nationality": ""\n      }\n    }\n  ]\n}'
+      }
+    ]
+  },
+  
   "CONREQ-OK": 
   {
-    title: "Adding a Contact",
+    title: "Adding An Online Contact",
     caseId: "CONREQ-OK",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
-    description: "User adds another user as a contact",
+    description: "User adds an online user as a contact",
     target: "Server, Client",
     preConditions: ["JOHN is logged in", "JESSICA is logged in", "JOHN and JESSICA are not contacts of each other", "JOHN has found JESSICA with search"],
     dependencies: ["FIND-3"],
@@ -663,7 +694,7 @@ var tests =
       {
         description: "As JESSICA wait for next heartbeat",
         data: "#2",
-        expected: "Request recieved"
+        expected: "Request received"
       },
       {
         description: "As JESSICA accept the request",
@@ -673,12 +704,12 @@ var tests =
       {
         description: "As JOHN wait for next heartbeat",
         data: "#4",
-        expected: "Contact details of JESSICA recieved"
+        expected: "Contact details of JESSICA received"
       },
       {
         description: "As JESSICA wait for next heartbeat",
         data: "#5",
-        expected: "Contact details of JOHN recieved"
+        expected: "Contact details of JOHN received"
       }
     ],
     postConditions: ["JOHN and JESSICA are contacts of each other"],
@@ -711,6 +742,42 @@ var tests =
     ]
   },
   
+  "CONREQ-OFF": 
+  {
+    title: "Adding An Offline Contact",
+    caseId: "CONREQ-OFF",
+    rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
+    description: "User adds an offline user as a contact",
+    target: "Server, Client",
+    preConditions: ["JOHN is logged in", "JESSICA is not logged in", "JOHN and JESSICA are not contacts of each other", "JOHN has found JESSICA with search"],
+    dependencies: ["FIND-3"],
+    steps: [
+      {
+        description: "As JOHN click Contact Request button to send a request to JESSICA",
+        data: "#1",
+        expected: "Request sent successfully"
+      },
+      {
+        description: "As JESSICA login",
+        data: "#2",
+        expected: "Request received"
+      }
+    ],
+    postConditions: ["JOHN and JESSICA are contacts of each other"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCNREQ\n{\n  "seqid": xxxx,\n  "userid": "jessica"\n}',
+        response: 'SRVROK\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CHBEAT\n{\n  "seqid": yyyy\n}',
+        response: 'SRVROK\n{\n  "seqid": yyyy,\n  "contacts": [],\n  "inbox": [],\n  "requests": [\n    {  \n      "senderid": "foobar",\n      "date": "YYYY-MM-DDTHH:mm:ss"\n    }\n  ]\n}'
+      }
+    ]
+  },
+  
   "CONREQ-DN": 
   {
     title: "Denying Contact Request",
@@ -729,7 +796,7 @@ var tests =
       {
         description: "As JAMES wait for next heartbeat",
         data: "#2",
-        expected: "Request recieved"
+        expected: "Request received"
       },
       {
         description: "As JAMES deny the request",
@@ -739,12 +806,12 @@ var tests =
       {
         description: "As JOHN wait for next heartbeat",
         data: "#4",
-        expected: "Contact details of JAMES are not recieved"
+        expected: "Contact details of JAMES are not received"
       },
       {
         description: "As JAMES wait for next heartbeat",
         data: "#5",
-        expected: "Contact details of JOHN are not recieved"
+        expected: "Contact details of JOHN are not received"
       }
     ],
     postConditions: ["JOHN and JAMES are not contacts of each other"],
@@ -795,7 +862,7 @@ var tests =
       {
         description: "As JAMES wait for next heartbeat",
         data: "#2",
-        expected: "Request recieved"
+        expected: "Request received"
       },
       {
         description: "As JOHN click Contact Request button to send a request to JAMES",
@@ -805,10 +872,10 @@ var tests =
       {
         description: "As JAMES wait for next heartbeat",
         data: "#4",
-        expected: "Only 1 request is recieved from JOHN"
+        expected: "Only 1 request is received from JOHN"
       }
     ],
-    postConditions: ["JAMES recieved only 1 contact request from JOHN"],
+    postConditions: ["JAMES received only 1 contact request from JOHN"],
     testData: [
       {
         id: "#1",
@@ -851,7 +918,7 @@ var tests =
       {
         description: "As JOHN wait for next heartbeat",
         data: "#2",
-        expected: "No contact request from JAMES is recieved"
+        expected: "No contact request from JAMES is received"
       }
     ],
     postConditions: ["JOHN did not get a contact request from JAMES"],
@@ -882,7 +949,7 @@ var tests =
       {
         description: "As JAMES wait for the next 3 heartbeats",
         data: "#1",
-        expected: "Contact request from JOHN is recieved in all heartbeats"
+        expected: "Contact request from JOHN is received in all heartbeats"
       },
       {
         description: "As JAMES close client, wait for at least 30 seconds, and log back in",
@@ -892,7 +959,7 @@ var tests =
       {
         description: "As JAMES wait for the next 3 heartbeats",
         data: "#1",
-        expected: "Contact request from JOHN is recieved in all heartbeats"
+        expected: "Contact request from JOHN is received in all heartbeats"
       }
     ],
     postConditions: ["JAMES kept recieving contact request from JOHN"],
@@ -923,15 +990,15 @@ var tests =
       {
         description: "As JAMES wait for next heartbeat",
         data: "#2",
-        expected: "Request recieved"
+        expected: "Request received"
       },
       {
         description: "As JAMES deny the request and repeat the steps 3 times",
         data: null,
-        expected: "Request recieved"
+        expected: "Request received"
       }
     ],
-    postConditions: ["JAMES recieved a contact request from JOHN"],
+    postConditions: ["JAMES received a contact request from JOHN"],
     testData: [
       {
         id: "#1",
@@ -964,7 +1031,7 @@ var tests =
       {
         description: "As JOHN wait for next heartbeat",
         data: "#2",
-        expected: "No contact request from JAMES is recieved"
+        expected: "No contact request from JAMES is received"
       }
     ],
     postConditions: ["JOHN did not get a contact request from JAMES"],
@@ -1209,10 +1276,10 @@ var tests =
       {
         description: "As JAMES login and send a heartbeat",
         data: "#2",
-        expected: "Offline message from JOHN is recieved"
+        expected: "Offline message from JOHN is received"
       }
     ],
-    postConditions: ["JAMES recieved an offline message from JOHN"],
+    postConditions: ["JAMES received an offline message from JOHN"],
     testData: [
       {
         id: "#1",
@@ -1248,7 +1315,7 @@ var tests =
         expected: "No offline messages"
       }
     ],
-    postConditions: ["JAMES recieved an offline message from JOHN"],
+    postConditions: ["JAMES received an offline message from JOHN"],
     testData: [
       {
         id: "#1",
@@ -1320,7 +1387,7 @@ var tests =
         expected: "No offline messages from JOHN"
       }
     ],
-    postConditions: ["JAMES did not recieved an offline message from JOHN"],
+    postConditions: ["JAMES did not received an offline message from JOHN"],
     testData: [
       {
         id: "#1",
@@ -1921,10 +1988,61 @@ var tests =
       }
     ]
   },
+
+  "CONREQ-UB": 
+  {
+    title: "Adding A Busy Contact",
+    caseId: "CONREQ-UB",
+    rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
+    description: "User adds a busy user as a contact",
+    target: "Client",
+    preConditions: ["JOHN is logged in", "JESSICA is busy", "JOHN and JESSICA are not contacts of each other", "JOHN has found JESSICA with search"],
+    dependencies: ["FIND-3", "CHTREQ-OK", "ENDCHT-OK"],
+    steps: [
+      {
+        description: "As JOHN click Contact Request button to send a request to JESSICA",
+        data: "#1",
+        expected: "Request sent successfully"
+      },
+      {
+        description: "As JESSICA wait for next heartbeat",
+        data: "#2",
+        expected: "Request received"
+      },
+      {
+        description: "As JESSICA accept the request",
+        data: "#3",
+        expected: "Request accepted successfully"
+      },
+      {
+        description: "As JESSICA end current chat, and start chatting with JOHN",
+        data: null,
+        expected: "JOHN and JESSICA are chatting"
+      }
+    ],
+    postConditions: ["JOHN and JESSICA are engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCNREQ\n{\n  "seqid": xxxx,\n  "userid": "jessica"\n}',
+        response: 'SRVROK\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CHBEAT\n{\n  "seqid": yyyy\n}',
+        response: 'SRVROK\n{\n  "seqid": yyyy,\n  "contacts": [],\n  "inbox": [],\n  "requests": [\n    {  \n      "senderid": "foobar",\n      "date": "YYYY-MM-DDTHH:mm:ss"\n    }\n  ]\n}'
+      },
+      {
+        id: "#3",
+        request: 'CCNRES\n{\n  "seqid": zzzz,\n  "userid": "foobar",\n  "response": "accept"\n}',
+        response: 'SRVROK\n{\n  "seqid": zzzz\n}'
+      }
+    ]
+  },
   
   "SRVBAD-1": 
   {
-    title: "Bad Request to Server",
+    title: "Bad Request to Server 1",
     caseId: "SRVBAD-1",
     rfcReferences: ["2.2.2"],
     description: "Server can ignores bad requests",
@@ -1955,7 +2073,7 @@ var tests =
   
   "SRVBAD-2": 
   {
-    title: "Bad Request to Server",
+    title: "Bad Request to Server 2",
     caseId: "SRVBAD-2",
     rfcReferences: ["2.2.2"],
     description: "Server can ignores bad requests",
@@ -1986,7 +2104,7 @@ var tests =
   
   "SRVBAD-3": 
   {
-    title: "Bad Request to Server",
+    title: "Bad Request to Server 3",
     caseId: "SRVBAD-3",
     rfcReferences: ["2.2.2"],
     description: "Server can ignores bad requests",
@@ -2017,7 +2135,7 @@ var tests =
   
   "CLNBAD-1": 
   {
-    title: "Bad Request to Client",
+    title: "Bad Request to Client 1",
     caseId: "CLNBAD-1",
     rfcReferences: ["2.2.2"],
     description: "Client can ignore bad requests",
@@ -2048,7 +2166,7 @@ var tests =
   
   "CLNBAD-2": 
   {
-    title: "Bad Request to Client",
+    title: "Bad Request to Client 2",
     caseId: "CLNBAD-1",
     rfcReferences: ["2.2.2"],
     description: "Client can ignore bad requests",
@@ -2079,7 +2197,7 @@ var tests =
   
   "CLNBAD-3": 
   {
-    title: "Bad Request to Client",
+    title: "Bad Request to Client 3",
     caseId: "CLNBAD-1",
     rfcReferences: ["2.2.2"],
     description: "Client can ignore bad requests",
