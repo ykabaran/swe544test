@@ -96,10 +96,10 @@ var tests =
 {
   "INSTL-SRV": 
   {
-    title: "Client Register",
+    title: "Install Server",
     caseId: "INSTL-SRV",
     rfcReferences: ["3.1.1"],
-    description: "Install server",
+    description: "Install server following the given instructions",
     target: "Server",
     preConditions: ["Host machine is able to listen to incoming traffic on the fixed TCP port 8544"],
     dependencies: [],
@@ -116,10 +116,10 @@ var tests =
   
   "INSTL-CLN": 
   {
-    title: "Client Register",
+    title: "Install Client",
     caseId: "INSTL-CLN",
     rfcReferences: ["4.1.1"],
-    description: "Install client",
+    description: "Install client following the given instructions",
     target: "Client",
     preConditions: ["Host machine is able to listen to incoming traffic on the fixed TCP port 8545", "Host machine is able to use the fixed TCP port 8545 for outgoing traffic", "Host machine is able to use the fixed TCP port 8544 for outgoing traffic"],
     dependencies: [],
@@ -136,7 +136,7 @@ var tests =
   
   "RGSTR-IE": 
   {
-    title: "Client Register",
+    title: "Client Invalid Email Check",
     caseId: "CRGSTR-IE",
     rfcReferences: ["2.1.3.1", "CRGSTR: Client Register"],
     description: "Enter a series of invalid email addresses at registration form",
@@ -166,7 +166,7 @@ var tests =
   
   "RGSTR-IP": 
   {
-    title: "Client Register",
+    title: "Client Non-Matching Passwords Check",
     caseId: "RGSTR-IP",
     rfcReferences: ["2.1.3.1", "CRGSTR: Client Register"],
     description: "Enter non-matching passwords at registration form",
@@ -201,7 +201,7 @@ var tests =
   
   "RGSTR-OK": 
   {
-    title: "Client Register",
+    title: "Successful Registration",
     caseId: "RGSTR-OK",
     rfcReferences: ["2.1.3.1", "3.1.2", "CRGSTR: Client Register"],
     description: "Register a new user with valid parameters",
@@ -252,7 +252,7 @@ var tests =
   
   "RGSTR-DU": 
   {
-    title: "Client Register",
+    title: "Unique Username Registration Check",
     caseId: "RGSTR-DU",
     rfcReferences: ["3.1.3", "CRGSTR: Client Register"],
     description: "Attempt to register with an existing username",
@@ -303,7 +303,7 @@ var tests =
   
   "LOGIN-OK": 
   {
-    title: "Client Login",
+    title: "Successful Login",
     caseId: "LOGIN-OK",
     rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
     description: "Login with valid parameters",
@@ -344,7 +344,7 @@ var tests =
   
   "LOGIN-EP": 
   {
-    title: "Client Login",
+    title: "Login Attempt With Empty Password",
     caseId: "LOGIN-EP",
     rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
     description: "Attempt to login with empty password",
@@ -390,7 +390,7 @@ var tests =
   
   "LOGIN-IP": 
   {
-    title: "Client Login",
+    title: "Login Attempt With Invalid Password",
     caseId: "LOGIN-IP",
     rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
     description: "Attempt to login with invalid password",
@@ -436,7 +436,7 @@ var tests =
   
   "LOGIN-NP": 
   {
-    title: "Client Login",
+    title: "Login Attempt with Missing Password Injection",
     caseId: "LOGIN-IP",
     rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
     description: "Inject a login with missing password field",
@@ -472,7 +472,7 @@ var tests =
   
   "HBEAT-FQ": 
   {
-    title: "Client Heartbeat",
+    title: "Client Heartbeat Frequency",
     caseId: "HBEAT-FQ",
     rfcReferences: ["3.1.6", "CHBEAT: Client Heartbeat"],
     description: "Check the frequency of heartbeat messages",
@@ -503,7 +503,7 @@ var tests =
   
   "DISCON": 
   {
-    title: "Client Login",
+    title: "Client Disconnect Timeout",
     caseId: "DISCON",
     rfcReferences: ["4.1.10"],
     description: "Client disconnects automatically after not being able to contact to server for 30 seconds",
@@ -523,7 +523,7 @@ var tests =
   
   "FIND-1": 
   {
-    title: "Client Find User",
+    title: "Searching For Users 1",
     caseId: "FIND-1",
     rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
     description: "Search and find other users",
@@ -554,7 +554,7 @@ var tests =
   
   "FIND-2": 
   {
-    title: "Client Find User",
+    title: "Searching For Users 2",
     caseId: "FIND-2",
     rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
     description: "Search and find other users",
@@ -585,7 +585,7 @@ var tests =
   
   "FIND-3": 
   {
-    title: "Client Find User",
+    title: "Searching For Users 3",
     caseId: "FIND-3",
     rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
     description: "Search and find other users",
@@ -616,7 +616,7 @@ var tests =
   
   "FIND-4": 
   {
-    title: "Client Find User",
+    title: "Searching For Users 4",
     caseId: "FIND-4",
     rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
     description: "Search and find other users",
@@ -647,7 +647,7 @@ var tests =
   
   "CONREQ-OK": 
   {
-    title: "Client Contact Request",
+    title: "Adding a Contact",
     caseId: "CONREQ-OK",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
     description: "User adds another user as a contact",
@@ -713,7 +713,7 @@ var tests =
   
   "CONREQ-DN": 
   {
-    title: "Client Contact Request",
+    title: "Denying Contact Request",
     caseId: "CONREQ-DN",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
     description: "User denies a contact request",
@@ -779,7 +779,7 @@ var tests =
   
   "CONREQ-DB1": 
   {
-    title: "Client Contact Request",
+    title: "Prevent Double Contact Request From Requester",
     caseId: "CONREQ-DB1",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
     description: "User cannot send two contact requests to the same user",
@@ -835,7 +835,7 @@ var tests =
   
   "CONREQ-DB2": 
   {
-    title: "Client Contact Request",
+    title: "Prevent Double Contact Request From Responder",
     caseId: "CONREQ-DB2",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
     description: "User cannot send contact request if an incoming request already exists",
@@ -871,7 +871,7 @@ var tests =
   
   "CONREQ-PER": 
   {
-    title: "Client Contact Request",
+    title: "Persistent Contact Request",
     caseId: "CONREQ-DB2",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
     description: "The server persists an open contact request",
@@ -907,7 +907,7 @@ var tests =
   
   "CONREQ-RE": 
   {
-    title: "Client Contact Request",
+    title: "Sending Contact Requests Multiple Times",
     caseId: "CONREQ-RE",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
     description: "User sends a contact request after the first request is denied",
@@ -923,6 +923,11 @@ var tests =
       {
         description: "As JAMES wait for next heartbeat",
         data: "#2",
+        expected: "Request recieved"
+      },
+      {
+        description: "As JAMES deny the request and repeat the steps 3 times",
+        data: null,
         expected: "Request recieved"
       }
     ],
@@ -943,7 +948,7 @@ var tests =
   
   "CONREQ-CON": 
   {
-    title: "Client Contact Request",
+    title: "Sending Contact Request to User Who Is Already a Contact",
     caseId: "CONREQ-DB2",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
     description: "User cannot send contact request to a contact",
@@ -952,7 +957,7 @@ var tests =
     dependencies: ["CONREQ-OK"],
     steps: [
       {
-        description: "As JAMES send a contact request to JOHN (or inject if client does not allow)",
+        description: "As JAMES inject a contact request to JOHN",
         data: "#1",
         expected: "Request is not sent"
       },
@@ -979,7 +984,7 @@ var tests =
   
   "PROEDT": 
   {
-    title: "Client Profile Edit",
+    title: "Editing Profile",
     caseId: "CPROFE",
     rfcReferences: ["2.1.3.8", "3.1.7", "4.1.5", "CPROFE: Client Profile Edit"],
     description: "User updates his profile",
@@ -1045,7 +1050,7 @@ var tests =
   
   "HBEAT-ON": 
   {
-    title: "Client Heartbeat Check",
+    title: "Becoming Online",
     caseId: "HBEAT-ON",
     rfcReferences: ["3.1.4", "3.1.6", "4.1.3", "CHBEAT: Client Heartbeat"],
     description: "Client status updates to online once logged in",
@@ -1091,7 +1096,7 @@ var tests =
   
   "HBEAT-OFF": 
   {
-    title: "Client Heartbeat Check",
+    title: "Becoming Offline",
     caseId: "HBEAT-OFF",
     rfcReferences: ["3.1.4", "3.1.6", "4.1.3", "CHBEAT: Client Heartbeat"],
     description: "Server updates client status to offline once 3 heartbeats are missed",
@@ -1132,7 +1137,7 @@ var tests =
   
   "HBEAT-SKIP": 
   {
-    title: "Client Heartbeat Check",
+    title: "Skipping Heartbeats",
     caseId: "HBEAT-SKIP",
     rfcReferences: ["3.1.4", "3.1.6", "4.1.3", "CHBEAT: Client Heartbeat"],
     description: "Server updates client status to offline if and only if 3 heartbeats are missed in a row",
@@ -1146,7 +1151,7 @@ var tests =
         expected: "JOHN is online"
       },
       {
-        description: "As JOHN close client and wait for 20 seconds, then open it back up",
+        description: "As JOHN disconnect the internet connection of the client for 20 seconds, then open it back up",
         data: "#2",
         expected: "JOHN is logged in"
       },
@@ -1178,7 +1183,7 @@ var tests =
   
   "OFFMSG-OK": 
   {
-    title: "Client Send Offline Message",
+    title: "Sending An Offline Message",
     caseId: "OFFMSG",
     rfcReferences: ["2.1.3.7", "4.1.8", "COFFLN: Client Send Offline Message"],
     description: "User sends an offline message to a contact",
@@ -1224,7 +1229,7 @@ var tests =
   
   "OFFMSG-NC": 
   {
-    title: "Client Send Offline Message",
+    title: "Sending An Offline Message to a Non-Contact User",
     caseId: "OFFMSG",
     rfcReferences: ["2.1.3.7", "COFFLN: Client Send Offline Message"],
     description: "Injecting an offline message to a non-contact",
@@ -1260,7 +1265,7 @@ var tests =
   
   "OFFMSG-NU": 
   {
-    title: "Client Send Offline Message",
+    title: "Sending An Offline Message to a Non-existing User",
     caseId: "OFFMSG",
     rfcReferences: ["2.1.3.7", "COFFLN: Client Send Offline Message"],
     description: "Injecting an offline message to a non-user",
@@ -1296,7 +1301,7 @@ var tests =
   
   "OFFMSG-ON": 
   {
-    title: "Client Send Offline Message",
+    title: "Sending An Offline Message to an Online User",
     caseId: "OFFMSG",
     rfcReferences: ["2.1.3.7", "COFFLN: Client Send Offline Message"],
     description: "An offline message is injected to an online user",
@@ -1332,7 +1337,7 @@ var tests =
   
   "OFFMSG-CONC": 
   {
-    title: "Client Send Offline Message",
+    title: "Sending An Offline Message As User Becomes Online",
     caseId: "OFFMSG-CONC",
     rfcReferences: ["2.1.3.7", "4.1.8", "COFFLN: Client Send Offline Message"],
     description: "An offline message is sent to an online user because of a concurrency problem",
@@ -1374,9 +1379,9 @@ var tests =
   
   "CHTREQ-OK1": 
   {
-    title: "Client Chat Request",
+    title: "Chatting Successfully 1",
     caseId: "CHTREQ-OK1",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response", "CCCHAT: Client-to-client Chat Message"],
     description: "A user sends a chat request to a contact",
     target: "Client",
     designed: {
@@ -1448,9 +1453,9 @@ var tests =
   
   "CHTREQ-OK2": 
   {
-    title: "Client Chat Request",
+    title: "Chatting Successfully 2",
     caseId: "CHTREQ-OK2",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response", "CCCHAT: Client-to-client Chat Message"],
     description: "A user sends a accepts a chat request and immediately chats",
     target: "Client",
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES", "JAMES accepted the chat request from JOHN", "JOHN and JAMES did not send each other any messages"],
@@ -1494,13 +1499,13 @@ var tests =
   
   "CHTREQ-DN1": 
   {
-    title: "Client Chat Request Deny",
+    title: "Denying a Chat Request 1",
     caseId: "CHTREQ-DN1",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response"],
     description: "User denies a chat request from a contact",
     target: "Client",
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
-    dependencies: ["Client Contact Request"],
+    dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES receive and deny the chat request from JOHN",
@@ -1540,9 +1545,9 @@ var tests =
   
   "CHTREQ-DN2": 
   {
-    title: "Client Chat Request Deny",
+    title: "Denying A Chat Request 2",
     caseId: "CHTREQ-DN2",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response"],
     description: "User denies a chat request from a contact",
     target: "Client",
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES", "JAMES has denied the chat request from JOHN", "JESSICA is logged in and available", "JESSICA and JOHN are contacts of each other", "MARK is logged in and available", "MARK and JAMES are contacts of each other"],
@@ -1565,13 +1570,13 @@ var tests =
   
   "CHTREQ-NC": 
   {
-    title: "Client Chat Request Deny",
+    title: "Sending Chat Request to a Non-Contact",
     caseId: "CHTREQ-DN1",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHAT: Client-to-client Chat Message"],
     description: "Inject a chat request to a non-contact",
     target: "Client",
     preConditions: ["JOHN is logged in and available", "MARK is logged in and available", "JOHN and MARK are not contacts of each other"],
-    dependencies: [],
+    dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JOHN inject a chat request to MARK",
@@ -1606,9 +1611,9 @@ var tests =
 
   "CHTREQ-OU": 
   {
-    title: "Client Chat Request Deny",
+    title: "Chat Requested User Becomes Offline",
     caseId: "CHTREQ-OU",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRS: Client-to-client Chat Request Response"],
     description: "User becomes offline with a pending chat request",
     target: "Client",
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
@@ -1637,13 +1642,13 @@ var tests =
   
   "CHTRES-NR": 
   {
-    title: "Client Chat Request Deny",
+    title: "Accepting A Non-Existing Chat Request",
     caseId: "CHTRES-NR",
-    rfcReferences: [],
-    description: "Chat request expires",
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRS: Client-to-client Chat Request Response"],
+    description: "A chat request response is injected to a contact",
     target: "Client",
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "There are no outstanding chat requests betweeen JOHN and JAMES"],
-    dependencies: [],
+    dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES inject an accepted chat response to JOHN",
@@ -1673,13 +1678,13 @@ var tests =
   
   "CHTREQ-TO": 
   {
-    title: "Client Chat Request Deny",
+    title: "Chat Request Expires",
     caseId: "CHTREQ-TO",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRS: Client-to-client Chat Request Response"],
     description: "Chat request expires",
     target: "Client",
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
-    dependencies: [],
+    dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "Wait for 120 seconds after the chat request was sent",
@@ -1704,9 +1709,9 @@ var tests =
   
   "CHTREQ-BU": 
   {
-    title: "Client Chat Request Sender Busy",
+    title: "Sending A Chat Request To A Busy User",
     caseId: "CHTREQ-BU",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response", "CCCHAT: Client-to-client Chat Message"],
     description: "User sends a chat request to a busy user",
     target: "Client",
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and busy", "JOHN and JAMES are contacts of each other"],
@@ -1740,9 +1745,9 @@ var tests =
   
   "CHTREQ-BR": 
   {
-    title: "Client Chat Request Sender Busy",
+    title: "Sending A Chat Request Then Becoming Busy",
     caseId: "CHTREQ-BU",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response", "CCCHAT: Client-to-client Chat Message"],
     description: "User accepts a chat request but the requesting user is busy",
     target: "Client",
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JESSICA is logged in and available", "JOHN and JAMES are contacts of each other", "JOHN and JESSICA are contacts of each other", "JOHN has sent contact requests to both JAMES and JESSICA"],
@@ -1796,9 +1801,9 @@ var tests =
   
   "CHTREQ-MR": 
   {
-    title: "Client Chat Request Sender Busy",
+    title: "Receiving Multiple Chat Requests",
     caseId: "CHTREQ-MR",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response", "CCCHAT: Client-to-client Chat Message"],
     description: "User receives chat requests from multiple contacts",
     target: "Client",
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JESSICA is logged in and available", "JOHN and JAMES are contacts of each other", "JOHN and JESSICA are contacts of each other", "JAMES and JESSICA both sent contact requests to JOHN"],
@@ -1847,9 +1852,9 @@ var tests =
   
   "ENDCHT-OK": 
   {
-    title: "Client End Chat",
+    title: "Ending Chat Successfully",
     caseId: "ENDCHT-OK",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.7", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response", "CCCHAT: Client-to-client Chat Message"],
     description: "User ends an ongoing chat",
     target: "Client",
     preConditions: ["JOHN is logged in and busy", "JAMES is logged in and busy", "JOHN and JAMES are chatting with each other"],
@@ -1883,13 +1888,13 @@ var tests =
   
   "ENDCHT-UO": 
   {
-    title: "Client End Chat",
+    title: "Ending Chat Without Warning",
     caseId: "ENDCHT-UO",
-    rfcReferences: [],
+    rfcReferences: ["2.1.3.4", "4.1.6", "CCCHRQ: Client-to-client Chat Request", "CCCHRS: Client-to-client Chat Request Response", "CCCHAT: Client-to-client Chat Message"],
     description: "Chat ends because one of the users engaged in chat became offline",
     target: "Client",
     preConditions: ["JOHN is logged in and busy", "JAMES is logged in and busy", "JOHN and JAMES are chatting with each other"],
-    dependencies: [],
+    dependencies: ["ENDCHT-OK"],
     steps: [
       {
         description: "As JAMES close client",
@@ -1921,11 +1926,11 @@ var tests =
   {
     title: "Bad Request to Server",
     caseId: "SRVBAD-1",
-    rfcReferences: [],
+    rfcReferences: ["2.2.2"],
     description: "Server can ignores bad requests",
     target: "Server",
     preConditions: ["JOHN is logged in"],
-    dependencies: [],
+    dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "As JOHN inject a message to server",
@@ -1952,11 +1957,11 @@ var tests =
   {
     title: "Bad Request to Server",
     caseId: "SRVBAD-2",
-    rfcReferences: [],
+    rfcReferences: ["2.2.2"],
     description: "Server can ignores bad requests",
     target: "Server",
     preConditions: ["JOHN is logged in"],
-    dependencies: [],
+    dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "As JOHN inject a message to server",
@@ -1983,11 +1988,11 @@ var tests =
   {
     title: "Bad Request to Server",
     caseId: "SRVBAD-3",
-    rfcReferences: [],
+    rfcReferences: ["2.2.2"],
     description: "Server can ignores bad requests",
     target: "Server",
     preConditions: ["JOHN is logged in"],
-    dependencies: [],
+    dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "As JOHN inject a message to server",
@@ -2014,11 +2019,11 @@ var tests =
   {
     title: "Bad Request to Client",
     caseId: "CLNBAD-1",
-    rfcReferences: [],
+    rfcReferences: ["2.2.2"],
     description: "Client can ignore bad requests",
     target: "Client",
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
-    dependencies: [],
+    dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "As JOHN inject a message to JAMES",
@@ -2045,11 +2050,11 @@ var tests =
   {
     title: "Bad Request to Client",
     caseId: "CLNBAD-1",
-    rfcReferences: [],
+    rfcReferences: ["2.2.2"],
     description: "Client can ignore bad requests",
     target: "Client",
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
-    dependencies: [],
+    dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "As JOHN inject a message to JAMES",
@@ -2076,11 +2081,11 @@ var tests =
   {
     title: "Bad Request to Client",
     caseId: "CLNBAD-1",
-    rfcReferences: [],
+    rfcReferences: ["2.2.2"],
     description: "Client can ignore bad requests",
     target: "Client",
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
-    dependencies: [],
+    dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "As JOHN inject a message to JAMES",
@@ -2094,6 +2099,37 @@ var tests =
       }
     ],
     postConditions: ["JOHN and JAMES are engaged in chat with each other"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRQ\n{\n  "seqid": xxxx\n}',
+        response: 'CCLERR\n{\n  "seqid": xxxx\n}'
+      }
+    ]
+  },
+  
+  "STRESS": 
+  {
+    title: "Server Stress Testing",
+    caseId: "STRESS",
+    rfcReferences: ["3.2.2"],
+    description: "Server can handle many concurrent users",
+    target: "Server",
+    preConditions: ["Up to 100 users are registered on the system", "No user has more than 20 contacts", "All users are logged in"],
+    dependencies: ["INSTL-SRV", "RGSTR-OK", "LOGIN-OK", "CONREQ-OK"],
+    steps: [
+      {
+        description: "Watch heartbeat requests with Wireshark",
+        data: null,
+        expected: "Heartbeat requests and responses are successful"
+      },
+      {
+        description: "Randomly log in and out of the clients, and watch heartbeat requests with Wireshark",
+        data: null,
+        expected: "Heartbeat requests and responses are successful"
+      }
+    ],
+    postConditions: ["Server is operational"],
     testData: [
       {
         id: "#1",

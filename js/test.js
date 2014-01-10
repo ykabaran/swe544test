@@ -1,4 +1,12 @@
 $(function() {
+  var testCaseList = [];
+  $.each(tests, function(key, value){
+    var testItem = '<li class="menuTestCase menuItem" test-id="'+key+'"><a href="#" onClick="return false;">'+value.title+'</a></li>'
+    testCaseList.push(testItem);
+  });
+  $("#testCaseMenuSeparator").after(testCaseList);
+  
+  
   $("#menuIntroduction").on("click", function(){
     loadIntroduction();
   });
