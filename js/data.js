@@ -733,6 +733,40 @@ var tests =
     ]
   },
   
+  "DISCON": 
+  {
+    title: "Client Login",
+    caseId: "DISCON",
+    priority: "High",
+    moduleName: "Client login screen",
+    rfcReferences: ["4.1.10"],
+    testTitle: "Verify login with valid username and password",
+    description: "Client disconnects automatically after not being able to contact to server for 30 seconds",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in"],
+    dependencies: ["LOGIN-OK"],
+    steps: [
+      {
+        description: "Cut off the internet connection of the client and wait for 30 seconds",
+        data: null,
+        expected: "Client logs off and returns to login screen",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN is not logged in"],
+    testData: []
+  },
+  
   "FIND-1": 
   {
     title: "Client Find User",

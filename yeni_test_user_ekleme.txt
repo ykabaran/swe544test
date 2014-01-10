@@ -1,0 +1,28 @@
+Yeni bir Test User eklemek icin:
+
+js/data.js altindaki users objesine yeni bir object eklenir
+	var users = {
+		...,
+		
+		"JAMES": {
+			title: "JAMES", //bunu key'le ayni yapiyorum genelde
+			userid: "james",
+			password: "pass",
+			email: "james@bar.com",
+			name: "James Doe",
+			profile: {
+			  message: "livin la vida loca",
+			  location: "the moon",
+			  gender: "M",
+			  nationality: "Turkish"
+			}
+		},
+		
+		...
+	};
+	
+daha sonra index.html altinda 29. satirdaki <li>... Test Users ...</li> altina yeni bir <li></li> eklenir
+
+	<li class="menuTestUser menuItem" user-id="JAMES"><a href="#" onClick="return false;">JAMES</a></li>
+	
+user-id custom attribute yerine users objesindeki key yazilir, <a> tagi altina menude gorulmesi istenilen herhangi bir title yazilabilir
