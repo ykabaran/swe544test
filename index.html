@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SWECHAT - Test Cases</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/test.css" rel="stylesheet">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/underscore.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/test.js"></script>
+  </head>  
+  <body>
+    <div class="container"> 
+      <header class="page-header test-header">
+        <h2>SWECHAT APPLICATION</h2>
+        <h3>TEST CASE DOCUMENT</h3>
+        <p>M. Emre Öğretici, Yıldız Kabaran</p>
+      </header>  
+      
+      <div class="row">  
+        <div class="span3 side-menu">  
+          <ul class="nav nav-list">   
+            <li id="menuIntroduction" class="menuItem active"><a href="#">Introduction</a></li>
+            <li id="menuTestPlan" class="menuItem"><a href="#">Test Plan</a></li>
+            <li id="menuTestNotes" class="menuItem"><a href="#">Notes</a></li>
+            <li class="nav-header">Test Users</li>
+            <li class="menuTestUser menuItem" user-id="JOHN"><a href="#" onClick="return false;">JOHN</a></li>
+            <li class="menuTestUser menuItem" user-id="JAMES_B"><a href="#" onClick="return false;">JAMES_B</a></li>
+            <li class="menuTestUser menuItem" user-id="JAMES"><a href="#" onClick="return false;">JAMES</a></li>
+            <li class="menuTestUser menuItem" user-id="MARK"><a href="#" onClick="return false;">MARK</a></li>
+            <li class="menuTestUser menuItem" user-id="JESSICA"><a href="#" onClick="return false;">JESSICA</a></li>
+            <li class="menuTestUser menuItem" user-id="CASSANDRA"><a href="#" onClick="return false;">CASSANDRA</a></li>
+            <li class="menuTestUser menuItem" user-id="STEVE"><a href="#" onClick="return false;">STEVE</a></li>
+            <li class="nav-header">Test Cases</li>  
+            <li class="menuTestCase menuItem" test-id="INSTL-SRV"><a href="#" onClick="return false;">INSTL-SRV</a></li>
+            <li class="menuTestCase menuItem" test-id="INSTL-CLN"><a href="#" onClick="return false;">INSTL-CLN</a></li>
+            <li class="menuTestCase menuItem" test-id="RGSTR-IE"><a href="#" onClick="return false;">RGSTR-IE</a></li>
+            <li class="menuTestCase menuItem" test-id="RGSTR-IP"><a href="#" onClick="return false;">RGSTR-IP</a></li>
+            <li class="menuTestCase menuItem" test-id="RGSTR-OK"><a href="#" onClick="return false;">RGSTR-OK</a></li>
+            <li class="menuTestCase menuItem" test-id="RGSTR-DU"><a href="#" onClick="return false;">RGSTR-DU</a></li>
+            <li class="menuTestCase menuItem" test-id="LOGIN-OK"><a href="#" onClick="return false;">LOGIN-OK</a></li>
+            <li class="menuTestCase menuItem" test-id="LOGIN-EP"><a href="#" onClick="return false;">LOGIN-EP</a></li>
+            <li class="menuTestCase menuItem" test-id="LOGIN-IP"><a href="#" onClick="return false;">LOGIN-IP</a></li>
+            <li class="menuTestCase menuItem" test-id="LOGIN-NP"><a href="#" onClick="return false;">LOGIN-NP</a></li>
+            <li class="menuTestCase menuItem" test-id="HBEAT-FQ"><a href="#" onClick="return false;">HBEAT-FQ</a></li>
+            <li class="menuTestCase menuItem" test-id="FIND-1"><a href="#" onClick="return false;">FIND-1</a></li>
+            <li class="menuTestCase menuItem" test-id="FIND-2"><a href="#" onClick="return false;">FIND-2</a></li>
+            <li class="menuTestCase menuItem" test-id="FIND-3"><a href="#" onClick="return false;">FIND-3</a></li>
+            <li class="menuTestCase menuItem" test-id="FIND-4"><a href="#" onClick="return false;">FIND-4</a></li>
+            <li class="menuTestCase menuItem" test-id="CONREQ-OK"><a href="#" onClick="return false;">CONREQ-OK</a></li>
+            <li class="menuTestCase menuItem" test-id="CONREQ-DN"><a href="#" onClick="return false;">CONREQ-DN</a></li>
+            <li class="menuTestCase menuItem" test-id="CONREQ-DB1"><a href="#" onClick="return false;">CONREQ-DB1</a></li>
+            <li class="menuTestCase menuItem" test-id="CONREQ-DB2"><a href="#" onClick="return false;">CONREQ-DB2</a></li>
+            <li class="menuTestCase menuItem" test-id="CONREQ-PER"><a href="#" onClick="return false;">CONREQ-PER</a></li>
+            <li class="menuTestCase menuItem" test-id="CONREQ-RE"><a href="#" onClick="return false;">CONREQ-RE</a></li>
+            <li class="menuTestCase menuItem" test-id="CONREQ-CON"><a href="#" onClick="return false;">CONREQ-CON</a></li>  
+            <li class="menuTestCase menuItem" test-id="PROEDT"><a href="#" onClick="return false;">PROEDT</a></li> 
+            <li class="menuTestCase menuItem" test-id="HBEAT-ON"><a href="#" onClick="return false;">HBEAT-ON</a></li> 
+            <li class="menuTestCase menuItem" test-id="HBEAT-OFF"><a href="#" onClick="return false;">HBEAT-OFF</a></li>
+            <li class="menuTestCase menuItem" test-id="HBEAT-SKIP"><a href="#" onClick="return false;">HBEAT-SKIP</a></li> 
+            <li class="menuTestCase menuItem" test-id="OFFMSG-OK"><a href="#" onClick="return false;">OFFMSG-OK</a></li> 
+            <li class="menuTestCase menuItem" test-id="OFFMSG-NC"><a href="#" onClick="return false;">OFFMSG-NC</a></li> 
+            <li class="menuTestCase menuItem" test-id="OFFMSG-NU"><a href="#" onClick="return false;">OFFMSG-NU</a></li> 
+            <li class="menuTestCase menuItem" test-id="OFFMSG-ON"><a href="#" onClick="return false;">OFFMSG-ON</a></li> 
+            <li class="menuTestCase menuItem" test-id="OFFMSG-CONC"><a href="#" onClick="return false;">OFFMSG-CONC</a></li>                
+          </ul>  
+        </div>
+        
+        <div id="introductionView" class="span9 contentView">
+          <h3>INTRODUCTION</h3>
+          <p>SWECHAT project is a web based chat application. The application features a server that forms the backbone of the chat system and also features clients which communicate with other chat clients in a peer-to-peer messaging mode. To test the complete functionality, security, usability and durability of the product, we will use different testing methods, cases and software which are described in this document.</p>
+          <br/>
+          <h4>GOALS AND OBJECTIVES</h4>
+          <p>The overall goals of the test processes are intended to prove that the functions of the product work as specified in RFC documents. Additionally, they are meant to uncover possible bugs.</p>
+          <br/>
+          <h4>STATEMENT OF SCOPE</h4>
+          <p>The scope of the testing would be all functional and non-functional activity within the product.</p>
+          <br/>
+          <h4>MAJOR CONSTRAINTS</h4>
+          <p>A primary constraint for testing would be the;</p>
+          <ul>
+            <li>Web server which server is hosted on.</li>
+            <li>Client application should be tested on different machine from same or different network with server.</li>
+            <li>Wireshark software to analyze TCP packets.</li>
+          </ul>
+        </div>
+        <div id="testPlanView" class="span9 contentView" style="display: none;">
+          <h3>TEST PLAN</h3>
+          <h4>SOFTWARE TO BE TESTED</h4>
+          <p>The product itself is to be tested as explicitly as possible. SWECHAT consists of two different main parts: Server and Client. Their interactions and the flow of information between Client to Server, Server to Client and Client to Client will be fully tested.</p>
+          <p>This section will outline the test plan that will be implemented in order to properly test SWECHAT. These tests will be done using the concepts of smoke testing, which will allow us to test larger piece of the product at a time depending on how the individual function relate to each other.</p>
+          <h5>Installation Testing</h5>
+          <p>Testing the installation of both client and server applications. Checking if both applications can be installed as defined in “User Manual”.</p>
+          <h5>Unit Testing</h5>
+          <p>The unit testing strategy involves breaking the system down into individual fields in which we will refer to as functions. All functions defined in RFC involving client, server, client-client and client-server will be tested.</p>
+          <h5>Compatibility Testing</h5>
+          <p>Application will be tested on different OS such as Windows and Linux (Did we agree on just using one OS?)</p>
+          <h5>Software Performance Testing</h5>
+          <p>Performance and durability of application will be tested. Application should respond to 10 requests in one second as normally which means it should support at least 10 clients online.</p>
+          <h5>Validation Testing</h5>
+          <p>Upon completing the tests that are preformed in installation testing and unit testing, that validity of the units tested will need to be confirmed. This means that output and functionality of the units will need to be compared to the language that was set forth in the software specification document. Validation testing will make sure the final product has the correct functionality throughout.</p>
+          <br/>
+          <h4>TESTING RESOURCE</h4>
+          <p>The resources to be used for testing include web server, client applications and Wireshark software.</p>
+          <br/>
+          <h4>TEST RECORD KEEPING</h4>
+          <p>For recording our test results, the proposed idea is to create table keeping track of when our functions pass and fail their specific tests. This method will allow us to quickly fill in the results of tests and refer to them later.</p>
+          <br/>
+          <h4>TESTING METRICS</h4>
+          <p>Both applications will be tested to meet the quality and technical expectations proposed in the requirements specification. Usability, efficiency, reliability and completeness are a few important metrics that need to be accounted for during testing activity.</p>
+          <ul>
+            <li><strong>Usability:</strong> this will take into account a users' ability to navigate and use the software with ease. Although this can be applied after software builds, this metric will be taken into higher consideration at the final development stages of the product.</li>
+            <li><strong>Reliability:</strong> this metric will verify that functions will have consistent results after each operation.</li>
+            <li><strong>Completeness:</strong> this metric will be used to test functions and the software as a whole, rating their functionality to the final versions specified in requirements.</li>
+          </ul>
+          <br/>
+          <h4>TEST SCHEDULE</h4>
+          <p>First installation testing will be completed. Then unit testing will be done. As each unit is tested it will be integrated with previously tested units in a top-down fashion. As new things are integrated, tests will be done to ensure that the product is working properly and there are not unforeseen side effects. During this process, the units will be tested against the specifications to ensure they meet the requirements. After each unit tested, we will check security, performance, and durability of the software.</p>
+          <br/>
+        </div>
+        <div id="testNotesView" class="span9 contentView">
+          <h3>NOTES</h3>
+          <p>If in any test case an error is expected as a response, then an empty response or no response for 30 seconds are also accepted.</p>
+          <p>Unless otherwise stated, test users have no contacts, offline messages, or requests.</p>
+          <p>Although the sequence number, ip address, and date fields in test data are not explicitly specified, during the actual tests these values will be checked for correctness.</p>
+        </div>
+        <div id="dynamicView" class="span9 contentView" style="display: none;"></div>
+      </div>  
+    </div>
+
+    <script type="text/template" id="testCaseTemplate">
+      <h3><%= caseId %></h3>
+      <table class="table table-bordered">
+        <!--<tr>
+          <th style="width:20%;">Test Case ID:</th>
+          <td><%= caseId %></td>
+          <!--<th>Test Designed by:</th>
+          <td><%= designed.by %></td>--><!--
+        </tr>-->
+        <!--<tr>
+          <th>Test Priority:</th>
+          <td><%= priority %></td>
+          <!--<th>Test Designed date:</th>
+          <td><%= designed.date %></td>--><!--
+        </tr>-->
+        <tr>
+          <th style="width:20%;">RFC References:</th>
+          <td>
+            <% for(var i=0; i<rfcReferences.length; ++i) { %>
+              <%= rfcReferences[i] %>
+              <% if(i<rfcReferences.length-1) { %>
+                <br/>
+              <% } %>
+            <% } %>
+          </td>
+          <!--<th>Test Executed by:</th>
+          <td><%= executed.by %></td>-->
+        </tr>
+        <!--<tr>
+          <th>Test Title:</th>
+          <td><%= testTitle %></td>
+          <!--<th>Test Execution date:</th>
+          <td><%= executed.date %></td>--><!--
+        </tr>-->
+        <tr>
+          <th>Description:</th>
+          <td><%= description %></td>
+          <!--<th></th>
+          <td></td>-->
+        </tr>
+        <tr>
+          <th>Target:</th>
+          <td><%= target %></td>
+          <!--<th></th>
+          <td></td>-->
+        </tr>
+      </table>
+
+      <table class="table table-bordered">
+        <tr>
+          <th style="width:20%;">Pre-Conditions:</th>
+          <td>
+            <% for(var i=0; i<preConditions.length; ++i) { %>
+              <%= preConditions[i] %>
+              <% if(i<preConditions.length-1) { %>
+                <br/>
+              <% } %>
+            <% } %>
+          </td>
+        </tr>
+        <tr>
+          <th>Dependencies:</th>
+          <td>
+            <% for(var i=0; i<dependencies.length; ++i) { %>
+              <%= dependencies[i] %>
+              <% if(i<dependencies.length-1) { %>
+                <br/>
+              <% } %>
+            <% } %>
+          </td>
+        </tr>
+      </table>
+
+      <table class="table table-bordered">
+        <tr>
+          <th style="width:8%;">Step</th>
+          <th>Description</th>
+          <th>Data</th>
+          <th>Expected Result</th>
+          <!--<th>Actual Result</th>
+          <th>Status (Pass/Fail)</th>
+          <th>Notes</th>-->
+        </tr>
+        <% for(var i=0; i<steps.length; ++i) { %>
+          <tr>
+            <td><%= (i+1) %></td>
+            <td><%= steps[i].description %></td>
+            <td><code><%= steps[i].data %></code></td>
+            <td><%= steps[i].expected %></td>
+            <!--<td><%= steps[i].actual %></td>
+            <td><%= steps[i].status %></td>
+            <td><%= steps[i].notes %></td>-->
+          </tr>
+        <% } %>
+      </table>
+
+      <table class="table table-bordered">
+        <tr>
+          <th style="width:20%;">Post-Conditions:</th>
+          <td>
+            <% for(var i=0; i<postConditions.length; ++i) { %>
+              <%= postConditions[i] %>
+              <% if(i<postConditions.length-1) { %>
+                <br/>
+              <% } %>
+            <% } %>
+          </td>
+        </tr>
+      </table>
+      
+      <% if(testData.length>0){ %>
+        <table class="table table-bordered">
+          <tr>
+            <th style="width:8%;">Data</th>
+            <th>Request</th>
+            <th>Response</th>
+          </tr>
+          <% for(var i=0; i<testData.length; ++i) { %>
+            <tr>
+              <td><code><%= testData[i].id %></code></td>
+              <td><pre><%= testData[i].request %></pre></td>
+              <td><pre><%= testData[i].response %></pre></td>
+            </tr>
+          <% } %>
+        </table>
+      <% } %>
+    </script>
+    
+    <script type="text/template" id="testUserTemplate">
+      <h3><%= title %></h3>
+      <table class="table table-bordered">
+        <tr>
+          <th style="width:20%;">Username:</th>
+          <td><%= userid %></td>
+        </tr>
+        <tr>
+          <th>Password:</th>
+          <td><%= password %></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><%= email %></td>
+        </tr>
+        <tr>
+          <th>Name:</th>
+          <td><%= name %></td>
+        </tr>
+      </table>
+
+      <table class="table table-bordered">
+        <tr>
+          <th colspan="2">Profile</th>
+        </tr>
+        <tr>
+          <th style="width:20%;">Message:</th>
+          <td><%= profile.message %></td>
+        </tr>
+        <tr>
+          <th>Location:</th>
+          <td><%= profile.location %></td>
+        </tr>
+          <tr>
+          <th>Gender:</th>
+          <td><%= profile.gender %></td>
+        </tr>
+        <tr>
+          <th>Nationality:</th>
+          <td><%= profile.nationality %></td>
+        </tr>
+      </table>
+    </script>
+  </body>
+</html>

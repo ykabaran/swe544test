@@ -1,0 +1,23 @@
+body {
+  background-color: #F7F8FC;
+}
+
+.side-menu {
+  background-color: #E0E9EE;
+}
+
+.test-header {
+  padding: 20px 20px 0 20px;
+  background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#f5f7f8),color-stop(100%,#e0e6ea));
+  background-image: -webkit-linear-gradient(#f5f7f8,#e0e6ea);
+  background-image: -moz-linear-gradient(#f5f7f8,#e0e6ea);
+  background-image: -o-linear-gradient(#f5f7f8,#e0e6ea);
+  background-image: linear-gradient(#f5f7f8,#e0e6ea);
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0 0 1px 1px;
+  -moz-box-shadow: rgba(0,0,0,0.2) 0 0 1px 1px;
+  box-shadow: rgba(0,0,0,0.2) 0 0 1px 1px;
+  text-shadow: rgba(255,255,255,0.6) 0 1px 0;
+  color: #5a6b77;
+  background-color: #e0e6ea;
+  border-bottom: 1px solid #b0b8bf;
+}
