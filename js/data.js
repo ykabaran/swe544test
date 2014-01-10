@@ -98,30 +98,16 @@ var tests =
   {
     title: "Client Register",
     caseId: "INSTL-SRV",
-    priority: "High",
-    moduleName: "Client registration screen",
     rfcReferences: ["3.1.1"],
-    testTitle: "Register a new user with valid parameters",
     description: "Install server",
     target: "Server",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["Host machine is able to listen to incoming traffic on the fixed TCP port 8544"],
     dependencies: [],
     steps: [
       {
         description: "Follow installation guidelines",
         data: "",
-        expected: "Server installed and started successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server installed and started successfully"
       }
     ],
     postConditions: ["Server is operational"],
@@ -132,30 +118,16 @@ var tests =
   {
     title: "Client Register",
     caseId: "INSTL-CLN",
-    priority: "High",
-    moduleName: "Client registration screen",
     rfcReferences: ["4.1.1"],
-    testTitle: "Register a new user with valid parameters",
     description: "Install client",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["Host machine is able to listen to incoming traffic on the fixed TCP port 8545", "Host machine is able to use the fixed TCP port 8545 for outgoing traffic", "Host machine is able to use the fixed TCP port 8544 for outgoing traffic"],
     dependencies: [],
     steps: [
       {
         description: "Follow installation guidelines",
         data: "",
-        expected: "Client installed and started successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client installed and started successfully"
       }
     ],
     postConditions: ["Client is operational"],
@@ -166,46 +138,26 @@ var tests =
   {
     title: "Client Register",
     caseId: "CRGSTR-IE",
-    priority: "High",
-    moduleName: "Client registration screen",
     rfcReferences: ["2.1.3.1", "CRGSTR: Client Register"],
-    testTitle: "Register a new user with valid parameters",
     description: "Enter a series of invalid email addresses at registration form",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["Registration form is filled with valid parameters except for email"],
     dependencies: [],
     steps: [
       {
         description: "Enter email and click Register button",
         data: "",
-        expected: "Invalid email",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Invalid email"
       },
       {
         description: "Enter email and click Register button",
         data: "foobar",
-        expected: "Invalid email",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Invalid email"
       },
       {
         description: "Enter email and click Register button",
         data: "foo@bar",
-        expected: "Invalid email",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Invalid email"
       }
     ],
     postConditions: ["No CRGSTR requests were sent to server"],
@@ -216,54 +168,31 @@ var tests =
   {
     title: "Client Register",
     caseId: "RGSTR-IP",
-    priority: "High",
-    moduleName: "Client registration screen",
     rfcReferences: ["2.1.3.1", "CRGSTR: Client Register"],
-    testTitle: "Register a new user with valid parameters",
     description: "Enter non-matching passwords at registration form",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["Registration form is filled with valid parameters except for passwords"],
     dependencies: [],
     steps: [
       {
         description: "Enter password",
         data: "foopassword",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Re-enter password and click Register button",
         data: "",
-        expected: "Passwords do not match",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Passwords do not match"
       },
       {
         description: "Re-enter password and click Register button",
         data: "foo",
-        expected: "Passwords do not match",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Passwords do not match"
       },
       {
         description: "Re-enter password and click Register button",
         data: "foopassworf",
-        expected: "Passwords do not match",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Passwords do not match"
       }
     ],
     postConditions: ["No CRGSTR requests were sent to server"],
@@ -274,70 +203,41 @@ var tests =
   {
     title: "Client Register",
     caseId: "RGSTR-OK",
-    priority: "High",
-    moduleName: "Client registration screen",
     rfcReferences: ["2.1.3.1", "3.1.2", "CRGSTR: Client Register"],
-    testTitle: "Register a new user with valid parameters",
     description: "Register a new user with valid parameters",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["A user with userid \"foobar\" does not exist"],
     dependencies: [],
     steps: [
       {
         description: "Enter email",
         data: "foo@bar.com",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter name",
         data: "John Foo Bar",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter username",
         data: "foobar",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter password",
         data: "foopassword",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Re-enter password",
         data: "foopassword",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Register button",
         data: "#1",
-        expected: "Registration successful",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Registration successful"
       }
     ],
     postConditions: ["JOHN is registered"],
@@ -354,70 +254,41 @@ var tests =
   {
     title: "Client Register",
     caseId: "RGSTR-DU",
-    priority: "High",
-    moduleName: "Client registration screen",
     rfcReferences: ["3.1.3", "CRGSTR: Client Register"],
-    testTitle: "Register a new user with valid parameters",
     description: "Attempt to register with an existing username",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is registered"],
     dependencies: ["RGSTR-OK"],
     steps: [
       {
         description: "Enter email",
         data: "foo2@bar.com",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter name",
         data: "James Foo Bar",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter username",
         data: "foobar",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter password",
         data: "passwordfoo",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Re-enter password",
         data: "passwordfoo",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Register button",
         data: "#1",
-        expected: "Registration error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Registration error"
       }
     ],
     postConditions: ["Registration failed"],
@@ -434,54 +305,31 @@ var tests =
   {
     title: "Client Login",
     caseId: "LOGIN-OK",
-    priority: "High",
-    moduleName: "Client login screen",
     rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
-    testTitle: "Verify login with valid username and password",
     description: "Login with valid parameters",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is registered"],
     dependencies: ["RGSTR-OK"],
     steps: [
       {
         description: "Enter username",
         data: "foobar",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter password",
         data: "foopassword",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Login button",
         data: "#1",
-        expected: "JOHN is logged in",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is logged in"
       },
       {
         description: "Observe sent requests with Wireshark for 30 seconds",
         data: null,
-        expected: "At least 2 client heartbeat requests are caught",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "At least 2 client heartbeat requests are caught"
       }
     ],
     postConditions: ["JOHN is logged in", "Client is sending heartbeats"],
@@ -498,54 +346,31 @@ var tests =
   {
     title: "Client Login",
     caseId: "LOGIN-EP",
-    priority: "High",
-    moduleName: "Client login screen",
     rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
-    testTitle: "Verify login with valid username and password",
     description: "Attempt to login with empty password",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is registered", "JOHN is not logged in"],
     dependencies: ["RGSTR-OK"],
     steps: [
       {
         description: "Enter username",
         data: "foobar",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter password",
         data: "",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Login button",
         data: "#1",
-        expected: "Login error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Login error"
       },
       {
         description: "Inject a heartbeat",
         data: "#2",
-        expected: "Server returned error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server returned error"
       }
     ],
     postConditions: ["JOHN is not logged in"],
@@ -567,54 +392,31 @@ var tests =
   {
     title: "Client Login",
     caseId: "LOGIN-IP",
-    priority: "High",
-    moduleName: "Client login screen",
     rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
-    testTitle: "Verify login with valid username and password",
     description: "Attempt to login with invalid password",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is registered", "JOHN is not logged in"],
     dependencies: ["RGSTR-OK"],
     steps: [
       {
         description: "Enter username",
         data: "foobar",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Enter password",
         data: "foopassworf",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Login button",
         data: "#1",
-        expected: "Login error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Login error"
       },
       {
         description: "Inject a heartbeat",
         data: "#2",
-        expected: "Server returned error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server returned error"
       }
     ],
     postConditions: ["JOHN is not logged in"],
@@ -636,38 +438,21 @@ var tests =
   {
     title: "Client Login",
     caseId: "LOGIN-IP",
-    priority: "High",
-    moduleName: "Client login screen",
     rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
-    testTitle: "Verify login with valid username and password",
     description: "Inject a login with missing password field",
     target: "Server",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is registered", "JOHN is not logged in"],
     dependencies: ["RGSTR-OK"],
     steps: [
       {
         description: "Inject a login message with no password field",
         data: "#1",
-        expected: "Login error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Login error"
       },
       {
         description: "Inject a heartbeat",
         data: "#2",
-        expected: "Server returned error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server returned error"
       }
     ],
     postConditions: ["JOHN is not logged in"],
@@ -689,38 +474,21 @@ var tests =
   {
     title: "Client Heartbeat",
     caseId: "HBEAT-FQ",
-    priority: "High",
-    moduleName: "Client Heartbeat to Server",
     rfcReferences: ["3.1.6", "CHBEAT: Client Heartbeat"],
-    testTitle: "Heartbeat of client",
     description: "Check the frequency of heartbeat messages",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JOHN has no contacts, offline messages, or contact requests"],
     dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "Observe requests with Wireshark",
         data: "#1",
-        expected: "Catch heartbeat requests",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Catch heartbeat requests"
       },
       {
         description: "Calculate the frequency of CHBEAT messages",
         data: null,
-        expected: "Messages sent and acknowledged every 10 seconds",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Messages sent and acknowledged every 10 seconds"
       }
     ],
     postConditions: ["JOHN is logged in"],
@@ -737,30 +505,16 @@ var tests =
   {
     title: "Client Login",
     caseId: "DISCON",
-    priority: "High",
-    moduleName: "Client login screen",
     rfcReferences: ["4.1.10"],
-    testTitle: "Verify login with valid username and password",
     description: "Client disconnects automatically after not being able to contact to server for 30 seconds",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in"],
     dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "Cut off the internet connection of the client and wait for 30 seconds",
         data: null,
-        expected: "Client logs off and returns to login screen",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client logs off and returns to login screen"
       }
     ],
     postConditions: ["JOHN is not logged in"],
@@ -771,38 +525,21 @@ var tests =
   {
     title: "Client Find User",
     caseId: "FIND-1",
-    priority: "High",
-    moduleName: "Client Can Find Other Clients",
     rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
-    testTitle: "Find User",
     description: "Search and find other users",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is registered", "MARK is registered", "JESSICA is registered", "CASSANDRA is registered"],
     dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "Enter search keyword",
         data: "es",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Find User button",
         data: "#1",
-        expected: "JAMES and JESSICA are returned",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES and JESSICA are returned"
       }
     ],
     postConditions: ["JAMES and JESSICA are found with search"],
@@ -819,38 +556,21 @@ var tests =
   {
     title: "Client Find User",
     caseId: "FIND-2",
-    priority: "High",
-    moduleName: "Client Can Find Other Clients",
     rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
-    testTitle: "Find User",
     description: "Search and find other users",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is registered", "MARK is registered", "JESSICA is registered", "CASSANDRA is registered"],
     dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "Enter search keyword",
         data: "ca",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Find User button",
         data: "#1",
-        expected: "JESSICA and CASSANDRA are returned",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JESSICA and CASSANDRA are returned"
       }
     ],
     postConditions: ["JESSICA and CASSANDRA are found with search"],
@@ -867,38 +587,21 @@ var tests =
   {
     title: "Client Find User",
     caseId: "FIND-3",
-    priority: "High",
-    moduleName: "Client Can Find Other Clients",
     rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
-    testTitle: "Find User",
     description: "Search and find other users",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is registered", "MARK is registered", "JESSICA is registered", "CASSANDRA is registered"],
     dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "Enter search keyword",
         data: "mark",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Find User button",
         data: "#1",
-        expected: "MARK is returned",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "MARK is returned"
       }
     ],
     postConditions: ["MARK is found with search"],
@@ -915,38 +618,21 @@ var tests =
   {
     title: "Client Find User",
     caseId: "FIND-4",
-    priority: "High",
-    moduleName: "Client Can Find Other Clients",
     rfcReferences: ["2.1.3.6", "3.1.3", "3.1.7", "4.1.4", "CFINDU: Client Find User"],
-    testTitle: "Find User",
     description: "Search and find other users",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is registered", "MARK is registered", "JESSICA is registered", "CASSANDRA is registered"],
     dependencies: ["LOGIN-OK"],
     steps: [
       {
         description: "Enter search keyword",
         data: "sss",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "Click Find User button",
         data: "#1",
-        expected: "None of the mentioned users are returned",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "None of the mentioned users are returned"
       }
     ],
     postConditions: ["None of the mentioned users are found with search"],
@@ -963,62 +649,36 @@ var tests =
   {
     title: "Client Contact Request",
     caseId: "CONREQ-OK",
-    priority: "High",
-    moduleName: "Client Can Add Other Clients",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
-    testTitle: "Contact Request",
     description: "User adds another user as a contact",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JESSICA is logged in", "JOHN and JESSICA are not contacts of each other", "JOHN has found JESSICA with search"],
     dependencies: ["FIND-3"],
     steps: [
       {
         description: "As JOHN click Contact Request button to send a request to JESSICA",
         data: "#1",
-        expected: "Request sent successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request sent successfully"
       },
       {
         description: "As JESSICA wait for next heartbeat",
         data: "#2",
-        expected: "Request recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request recieved"
       },
       {
         description: "As JESSICA accept the request",
         data: "#3",
-        expected: "Request accepted successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request accepted successfully"
       },
       {
         description: "As JOHN wait for next heartbeat",
         data: "#4",
-        expected: "Contact details of JESSICA recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Contact details of JESSICA recieved"
       },
       {
         description: "As JESSICA wait for next heartbeat",
         data: "#5",
-        expected: "Contact details of JOHN recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Contact details of JOHN recieved"
       }
     ],
     postConditions: ["JOHN and JESSICA are contacts of each other"],
@@ -1055,62 +715,36 @@ var tests =
   {
     title: "Client Contact Request",
     caseId: "CONREQ-DN",
-    priority: "High",
-    moduleName: "Client Can Add Other Clients",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
-    testTitle: "Contact Request",
     description: "User denies a contact request",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are not contacts of each other", "JOHN has found JAMES with search"],
     dependencies: ["FIND-3"],
     steps: [
       {
         description: "As JOHN click Contact Request button to send a request to JAMES",
         data: "#1",
-        expected: "Request sent successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request sent successfully"
       },
       {
         description: "As JAMES wait for next heartbeat",
         data: "#2",
-        expected: "Request recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request recieved"
       },
       {
         description: "As JAMES deny the request",
         data: "#3",
-        expected: "Request denied successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request denied successfully"
       },
       {
         description: "As JOHN wait for next heartbeat",
         data: "#4",
-        expected: "Contact details of JAMES are not recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Contact details of JAMES are not recieved"
       },
       {
         description: "As JAMES wait for next heartbeat",
         data: "#5",
-        expected: "Contact details of JOHN are not recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Contact details of JOHN are not recieved"
       }
     ],
     postConditions: ["JOHN and JAMES are not contacts of each other"],
@@ -1147,54 +781,31 @@ var tests =
   {
     title: "Client Contact Request",
     caseId: "CONREQ-DB1",
-    priority: "High",
-    moduleName: "Client Can Add Other Clients",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
-    testTitle: "Contact Request",
     description: "User cannot send two contact requests to the same user",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are not contacts of each other", "JOHN has found JAMES with search"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JOHN click Contact Request button to send a request to JAMES",
         data: "#1",
-        expected: "Request sent successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request sent successfully"
       },
       {
         description: "As JAMES wait for next heartbeat",
         data: "#2",
-        expected: "Request recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request recieved"
       },
       {
         description: "As JOHN click Contact Request button to send a request to JAMES",
         data: "#3",
-        expected: "Request cannot be sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request cannot be sent"
       },
       {
         description: "As JAMES wait for next heartbeat",
         data: "#4",
-        expected: "Only 1 request is recieved from JOHN",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Only 1 request is recieved from JOHN"
       }
     ],
     postConditions: ["JAMES recieved only 1 contact request from JOHN"],
@@ -1226,38 +837,21 @@ var tests =
   {
     title: "Client Contact Request",
     caseId: "CONREQ-DB2",
-    priority: "High",
-    moduleName: "Client Can Add Other Clients",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
-    testTitle: "Contact Request",
     description: "User cannot send contact request if an incoming request already exists",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are not contacts of each other", "JOHN has sent JAMES a contact request", "JAMES has found JOHN with search"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES click Contact Request button to send a request to JOHN",
         data: "#1",
-        expected: "Request is not sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request is not sent"
       },
       {
         description: "As JOHN wait for next heartbeat",
         data: "#2",
-        expected: "No contact request from JAMES is recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "No contact request from JAMES is recieved"
       }
     ],
     postConditions: ["JOHN did not get a contact request from JAMES"],
@@ -1279,46 +873,26 @@ var tests =
   {
     title: "Client Contact Request",
     caseId: "CONREQ-DB2",
-    priority: "High",
-    moduleName: "Client Can Add Other Clients",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
-    testTitle: "Contact Request",
     description: "The server persists an open contact request",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are not contacts of each other", "JOHN has sent JAMES a contact request"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES wait for the next 3 heartbeats",
         data: "#1",
-        expected: "Contact request from JOHN is recieved in all heartbeats",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Contact request from JOHN is recieved in all heartbeats"
       },
       {
         description: "As JAMES close client, wait for at least 30 seconds, and log back in",
         data: null,
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JAMES wait for the next 3 heartbeats",
         data: "#1",
-        expected: "Contact request from JOHN is recieved in all heartbeats",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Contact request from JOHN is recieved in all heartbeats"
       }
     ],
     postConditions: ["JAMES kept recieving contact request from JOHN"],
@@ -1335,38 +909,21 @@ var tests =
   {
     title: "Client Contact Request",
     caseId: "CONREQ-RE",
-    priority: "High",
-    moduleName: "Client Can Add Other Clients",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
-    testTitle: "Contact Request",
     description: "User sends a contact request after the first request is denied",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are not contacts of each other", "JAMES has previously denied a contact request from JOHN"],
     dependencies: ["CONREQ-OK", "CONREQ-DN"],
     steps: [
       {
         description: "As JOHN click Contact Request button to send a request to JAMES",
         data: "#1",
-        expected: "Request sent successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request sent successfully"
       },
       {
         description: "As JAMES wait for next heartbeat",
         data: "#2",
-        expected: "Request recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request recieved"
       }
     ],
     postConditions: ["JAMES recieved a contact request from JOHN"],
@@ -1388,38 +945,21 @@ var tests =
   {
     title: "Client Contact Request",
     caseId: "CONREQ-DB2",
-    priority: "High",
-    moduleName: "Client Can Add Other Clients",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
-    testTitle: "Contact Request",
     description: "User cannot send contact request to a contact",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JAMES has found JOHN with search"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES send a contact request to JOHN (or inject if client does not allow)",
         data: "#1",
-        expected: "Request is not sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request is not sent"
       },
       {
         description: "As JOHN wait for next heartbeat",
         data: "#2",
-        expected: "No contact request from JAMES is recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "No contact request from JAMES is recieved"
       }
     ],
     postConditions: ["JOHN did not get a contact request from JAMES"],
@@ -1441,78 +981,46 @@ var tests =
   {
     title: "Client Profile Edit",
     caseId: "CPROFE",
-    priority: "Medium",
-    moduleName: "Client Update His Profile Information",
     rfcReferences: ["2.1.3.8", "3.1.7", "4.1.5", "CPROFE: Client Profile Edit"],
-    testTitle: "Update Profile",
     description: "User updates his profile",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES_B is logged in", "JOHN and JAMES_B are contacts of each other"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JOHN wait for the next heart beat",
         data: "#1",
-        expected: "Recieved JAMES_B's current public profile",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Recieved JAMES_B's current public profile"
       },
       {
         description: "As JAMES_B enter status message",
         data: "livin la vida loca",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JAMES_B enter location",
         data: "the moon",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JAMES_B select gender from list",
         data: "M",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JAMES_B enter nationality",
         data: "Turkish",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JAMES_B Click Update button",
         data: "#2",
-        expected: "Profile updated successfully",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Profile updated successfully"
       },
       {
         description: "As JOHN wait for the next heart beat",
         data: "#3",
-        expected: "Recieved JAMES_B's updated public profile",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Recieved JAMES_B's updated public profile"
       }
     ],
     postConditions: ["JAMES_B's public profile is updated"],
@@ -1539,46 +1047,26 @@ var tests =
   {
     title: "Client Heartbeat Check",
     caseId: "HBEAT-ON",
-    priority: "High",
-    moduleName: "Server Heartbeat Check",
     rfcReferences: ["3.1.4", "3.1.6", "4.1.3", "CHBEAT: Client Heartbeat"],
-    testTitle: "Heartbeat from Client",
     description: "Client status updates to online once logged in",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is not logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES wait for the next heartbeat",
         data: "#1",
-        expected: "JOHN is offline",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is offline"
       },
       {
         description: "As JOHN login",
         data: "#2",
-        expected: "JOHN is logged in",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is logged in"
       },
       {
         description: "As JAMES wait for the next heartbeat",
         data: "#3",
-        expected: "JOHN is online",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is online"
       }
     ],
     postConditions: ["JOHN is logged in", "JAMES knows that JOHN is online"],
@@ -1605,46 +1093,26 @@ var tests =
   {
     title: "Client Heartbeat Check",
     caseId: "HBEAT-OFF",
-    priority: "High",
-    moduleName: "Server Heartbeat Check",
     rfcReferences: ["3.1.4", "3.1.6", "4.1.3", "CHBEAT: Client Heartbeat"],
-    testTitle: "Heartbeat from Client",
     description: "Server updates client status to offline once 3 heartbeats are missed",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES wait for the next heartbeat",
         data: "#1",
-        expected: "JOHN is online",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is online"
       },
       {
         description: "As JOHN close client and wait for 30 seconds",
         data: null,
-        expected: "JOHN is logged off",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is logged off"
       },
       {
         description: "As JAMES wait for the next heartbeat",
         data: "#2",
-        expected: "JOHN is offline",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is offline"
       }
     ],
     postConditions: ["JOHN is not logged in", "JAMES knows that JOHN is offline"],
@@ -1666,46 +1134,26 @@ var tests =
   {
     title: "Client Heartbeat Check",
     caseId: "HBEAT-SKIP",
-    priority: "High",
-    moduleName: "Server Heartbeat Check",
     rfcReferences: ["3.1.4", "3.1.6", "4.1.3", "CHBEAT: Client Heartbeat"],
-    testTitle: "Heartbeat from Client",
     description: "Server updates client status to offline if and only if 3 heartbeats are missed in a row",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES wait for the next heartbeat",
         data: "#1",
-        expected: "JOHN is online",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is online"
       },
       {
         description: "As JOHN close client and wait for 20 seconds, then open it back up",
         data: "#2",
-        expected: "JOHN is logged in",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is logged in"
       },
       {
         description: "As JAMES wait for the next heartbeat",
         data: "#3",
-        expected: "JOHN is online",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is online"
       }
     ],
     postConditions: ["JOHN is logged in", "JAMES knows that JOHN is online"],
@@ -1732,54 +1180,31 @@ var tests =
   {
     title: "Client Send Offline Message",
     caseId: "OFFMSG",
-    priority: "High",
-    moduleName: "Client Send Offline Message",
     rfcReferences: ["2.1.3.7", "4.1.8", "COFFLN: Client Send Offline Message"],
-    testTitle: "Offline Message",
     description: "User sends an offline message to a contact",
     target: "Server, Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is offline", "JOHN and JAMES are contacts of each other"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JOHN select JAMES from contacts and click Send Offline Message button",
         data: null,
-        expected: "A field is available on the client to enter a message",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "A field is available on the client to enter a message"
       },
       {
         description: "As JOHN enter the message",
         data: "Hey, call me when you get back.",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JOHN click Send Message button",
         data: "#1",
-        expected: "Message successfully sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Message successfully sent"
       },
       {
         description: "As JAMES login and send a heartbeat",
         data: "#2",
-        expected: "Offline message from JOHN is recieved",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Offline message from JOHN is recieved"
       }
     ],
     postConditions: ["JAMES recieved an offline message from JOHN"],
@@ -1801,38 +1226,21 @@ var tests =
   {
     title: "Client Send Offline Message",
     caseId: "OFFMSG",
-    priority: "High",
-    moduleName: "Client Send Offline Message",
     rfcReferences: ["2.1.3.7", "COFFLN: Client Send Offline Message"],
-    testTitle: "Offline Message",
     description: "Injecting an offline message to a non-contact",
     target: "Server",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "MARK is offline", "JOHN and MARK are not contacts of each other"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JOHN inject an offline message to MARK",
         data: "#1",
-        expected: "Server error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server error"
       },
       {
         description: "As MARK login and send a heartbeat",
         data: "#2",
-        expected: "No offline messages",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "No offline messages"
       }
     ],
     postConditions: ["JAMES recieved an offline message from JOHN"],
@@ -1854,38 +1262,21 @@ var tests =
   {
     title: "Client Send Offline Message",
     caseId: "OFFMSG",
-    priority: "High",
-    moduleName: "Client Send Offline Message",
     rfcReferences: ["2.1.3.7", "COFFLN: Client Send Offline Message"],
-    testTitle: "Offline Message",
     description: "Injecting an offline message to a non-user",
     target: "Server",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "no user with user id \"idontexist\" exists"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JOHN inject an offline message",
         data: "#1",
-        expected: "Server error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server error"
       },
       {
         description: "As JOHN send a heartbeat",
         data: "#2",
-        expected: "Server responded OK",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server responded OK"
       }
     ],
     postConditions: ["Server is operational"],
@@ -1907,38 +1298,21 @@ var tests =
   {
     title: "Client Send Offline Message",
     caseId: "OFFMSG",
-    priority: "High",
-    moduleName: "Client Send Offline Message",
     rfcReferences: ["2.1.3.7", "COFFLN: Client Send Offline Message"],
-    testTitle: "Offline Message",
     description: "An offline message is injected to an online user",
     target: "Server",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JOHN inject an offline message",
         data: "#1",
-        expected: "Message cannot be sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Message cannot be sent"
       },
       {
         description: "As JAMES send a heartbeat",
         data: "#2",
-        expected: "No offline messages from JOHN",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "No offline messages from JOHN"
       }
     ],
     postConditions: ["JAMES did not recieved an offline message from JOHN"],
@@ -1960,54 +1334,31 @@ var tests =
   {
     title: "Client Send Offline Message",
     caseId: "OFFMSG-CONC",
-    priority: "High",
-    moduleName: "Client Send Offline Message",
     rfcReferences: ["2.1.3.7", "4.1.8", "COFFLN: Client Send Offline Message"],
-    testTitle: "Offline Message",
     description: "An offline message is sent to an online user because of a concurrency problem",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is offline", "JOHN and JAMES are contacts of each other"],
     dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JOHN select JAMES from contacts and click Send Offline Message button",
         data: null,
-        expected: "A field is available on the client to enter a message",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "A field is available on the client to enter a message"
       },
       {
         description: "As JOHN enter the message",
         data: "Hey, call me when you get back.",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JAMES login",
         data: null,
-        expected: "JAMES is logged in",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES is logged in"
       },
       {
         description: "As JOHN click Send Message button before the next heartbeat",
         data: "#1",
-        expected: "Message cannot be sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Message cannot be sent"
       }
     ],
     postConditions: ["Client is operational"],
@@ -2025,10 +1376,7 @@ var tests =
   {
     title: "Client Chat Request",
     caseId: "CHTREQ-OK1",
-    priority: "High",
-    moduleName: "Accept chat request from contact",
     rfcReferences: [],
-    testTitle: "Chat request to client",
     description: "A user sends a chat request to a contact",
     target: "Client",
     designed: {
@@ -2045,50 +1393,32 @@ var tests =
       {
         description: "As JOHN send a chat request to JAMES",
         data: "#1",
-        expected: "Request successfully sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Request successfully sent"
       },
       {
         description: "As JAMES receive and accept the chat request",
         data: "#2",
-        expected: "Response successfully sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Response successfully sent"
       },
       {
         description: "As JOHN enter a message",
         data: "How is it going?",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JOHN send the message",
         data: "#3",
-        expected: "JAMES receives the message",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES receives the message"
       },
       {
         description: "As JAMES enter a message",
         data: "Just testing. How about you?",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JAMES send the message",
         data: "#4",
-        expected: "JOHN receives the message",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN receives the message"
       }
     ],
     postConditions: ["JOHN and JAMES are engaged in chat"],
@@ -2120,54 +1450,31 @@ var tests =
   {
     title: "Client Chat Request",
     caseId: "CHTREQ-OK2",
-    priority: "High",
-    moduleName: "Accept chat request from contact",
     rfcReferences: [],
-    testTitle: "Chat request to client",
     description: "A user sends a accepts a chat request and immediately chats",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES", "JAMES accepted the chat request from JOHN", "JOHN and JAMES did not send each other any messages"],
     dependencies: ["CHTREQ-OK1"],
     steps: [
       {
         description: "As JAMES enter a message",
         data: "Where have you been?",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JAMES send the message",
         data: "#1",
-        expected: "JOHN receives the message",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN receives the message"
       },
       {
         description: "As JOHN enter a message",
         data: "Busy trying to graduate, you?",
-        expected: null,
-        actual: null,
-        status: null,
-        notes: null
+        expected: null
       },
       {
         description: "As JOHN send the message",
         data: "#2",
-        expected: "JAMES receives the message",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES receives the message"
       }
     ],
     postConditions: ["JOHN and JAMES are engaged in chat"],
@@ -2189,46 +1496,26 @@ var tests =
   {
     title: "Client Chat Request Deny",
     caseId: "CHTREQ-DN1",
-    priority: "High",
-    moduleName: "Deny chat request from contact",
     rfcReferences: [],
-    testTitle: "Chat request to client",
     description: "User denies a chat request from a contact",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
     dependencies: ["Client Contact Request"],
     steps: [
       {
         description: "As JAMES receive and deny the chat request from JOHN",
         data: "#1",
-        expected: "Response successfully sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Response successfully sent"
       },
       {
         description: "As JOHN inject a chat message to JAMES",
         data: "#2",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       },
       {
         description: "As JAMES inject a chat message to JOHN",
         data: "#3",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       }
     ],
     postConditions: ["JOHN and JAMES are not engaged in chat"],
@@ -2255,38 +1542,21 @@ var tests =
   {
     title: "Client Chat Request Deny",
     caseId: "CHTREQ-DN2",
-    priority: "High",
-    moduleName: "Deny chat request from contact",
     rfcReferences: [],
-    testTitle: "Chat request to client",
     description: "User denies a chat request from a contact",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES", "JAMES has denied the chat request from JOHN", "JESSICA is logged in and available", "JESSICA and JOHN are contacts of each other", "MARK is logged in and available", "MARK and JAMES are contacts of each other"],
     dependencies: ["CHTREQ-DN1"],
     steps: [
       {
         description: "As JOHN engage in chat with JESSICA",
         data: null,
-        expected: "Successfully chatting",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Successfully chatting"
       },
       {
         description: "As JAMES engage in chat with MARK",
         data: null,
-        expected: "Successfully chatting",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Successfully chatting"
       }
     ],
     postConditions: ["Clients can chat after a denied request"],
@@ -2297,46 +1567,26 @@ var tests =
   {
     title: "Client Chat Request Deny",
     caseId: "CHTREQ-DN1",
-    priority: "High",
-    moduleName: "Deny chat request from contact",
     rfcReferences: [],
-    testTitle: "Chat request to client",
     description: "Inject a chat request to a non-contact",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and available", "MARK is logged in and available", "JOHN and MARK are not contacts of each other"],
     dependencies: [],
     steps: [
       {
         description: "As JOHN inject a chat request to MARK",
         data: "#1",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       },
       {
         description: "As MARK wait",
         data: null,
-        expected: "Chat request packet detected, but was not visible to user",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Chat request packet detected, but was not visible to user"
       },
       {
         description: "As JOHN inject a chat message to MARK",
         data: "#2",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       }
     ],
     postConditions: ["JOHN and MARK are not engaged in chat"],
@@ -2358,38 +1608,21 @@ var tests =
   {
     title: "Client Chat Request Deny",
     caseId: "CHTREQ-OU",
-    priority: "High",
-    moduleName: "Deny chat request from contact",
     rfcReferences: [],
-    testTitle: "Chat request to client",
     description: "User becomes offline with a pending chat request",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
     dependencies: ["Client Contact Request"],
     steps: [
       {
         description: "As JAMES close the client",
         data: null,
-        expected: "JAMES is logged off",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES is logged off"
       },
       {
         description: "Wait for 30 seconds, then as JOHN check JAMES's status on the next heartbeat",
         data: "#1",
-        expected: "JAMES's status is offline, JOHN is no longer waiting for a response from JAMES",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES's status is offline, JOHN is no longer waiting for a response from JAMES"
       }
     ],
     postConditions: ["JOHN and JAMES are not engaged in chat"],
@@ -2406,38 +1639,21 @@ var tests =
   {
     title: "Client Chat Request Deny",
     caseId: "CHTRES-NR",
-    priority: "High",
-    moduleName: "Deny chat request from contact",
     rfcReferences: [],
-    testTitle: "Chat request to client",
     description: "Chat request expires",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "There are no outstanding chat requests betweeen JOHN and JAMES"],
     dependencies: [],
     steps: [
       {
         description: "As JAMES inject an accepted chat response to JOHN",
         data: "#1",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       },
       {
         description: "As JAMES inject a chat message to JOHN",
         data: "#2",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       }
     ],
     postConditions: ["JOHN and JAMES are not engaged in chat"],
@@ -2459,38 +1675,21 @@ var tests =
   {
     title: "Client Chat Request Deny",
     caseId: "CHTREQ-TO",
-    priority: "High",
-    moduleName: "Deny chat request from contact",
     rfcReferences: [],
-    testTitle: "Chat request to client",
     description: "Chat request expires",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
     dependencies: [],
     steps: [
       {
         description: "Wait for 120 seconds after the chat request was sent",
         data: null,
-        expected: "JOHN is no longer waiting for a response from JAMES, JAMES can no longer respond to JOHN's chat request",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN is no longer waiting for a response from JAMES, JAMES can no longer respond to JOHN's chat request"
       },
       {
         description: "As JAMES inject an accepted chat response to JOHN",
         data: "#1",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       }
     ],
     postConditions: ["JOHN and JAMES are not engaged in chat"],
@@ -2507,38 +1706,21 @@ var tests =
   {
     title: "Client Chat Request Sender Busy",
     caseId: "CHTREQ-BU",
-    priority: "High",
-    moduleName: "Prevent illegal chat requests",
     rfcReferences: [],
-    testTitle: "Chat request to client from busy sender",
     description: "User sends a chat request to a busy user",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and busy", "JOHN and JAMES are contacts of each other"],
     dependencies: ["CHTREQ-OK"],
     steps: [
       {
         description: "As JOHN send a chat request to JAMES",
         data: "#1",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       },
       {
         description: "As JOHN inject a chat message to JAMES",
         data: "#2",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       }
     ],
     postConditions: ["JOHN and JAMES are not engaged in chat"],
@@ -2560,54 +1742,31 @@ var tests =
   {
     title: "Client Chat Request Sender Busy",
     caseId: "CHTREQ-BU",
-    priority: "High",
-    moduleName: "Prevent illegal chat requests",
     rfcReferences: [],
-    testTitle: "Chat request to client from busy sender",
     description: "User accepts a chat request but the requesting user is busy",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JESSICA is logged in and available", "JOHN and JAMES are contacts of each other", "JOHN and JESSICA are contacts of each other", "JOHN has sent contact requests to both JAMES and JESSICA"],
     dependencies: ["CHTREQ-OK"],
     steps: [
       {
         description: "As JESSICA accept the chat request from JOHN",
         data: "#1",
-        expected: "Response successfully sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Response successfully sent"
       },
       {
         description: "As JOHN send a chat message to JESSICA",
         data: "#2",
-        expected: "JESSICA received the message from JOHN",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JESSICA received the message from JOHN"
       },
       {
         description: "As JAMES accept the chat request from JOHN",
         data: "#3",
-        expected: "Response could not be sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Response could not be sent"
       },
       {
         description: "As JAMES inject a chat message to JOHN",
         data: "#4",
-        expected: "Message not sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Message not sent"
       }
     ],
     postConditions: ["JOHN and JESSICA are engaged in chat", "JOHN and JAMES are not engaged in chat"],
@@ -2639,46 +1798,26 @@ var tests =
   {
     title: "Client Chat Request Sender Busy",
     caseId: "CHTREQ-MR",
-    priority: "High",
-    moduleName: "Prevent illegal chat requests",
     rfcReferences: [],
-    testTitle: "Chat request to client from busy sender",
     description: "User receives chat requests from multiple contacts",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JESSICA is logged in and available", "JOHN and JAMES are contacts of each other", "JOHN and JESSICA are contacts of each other", "JAMES and JESSICA both sent contact requests to JOHN"],
     dependencies: ["CHTREQ-OK"],
     steps: [
       {
         description: "As JOHN accept chat request from JESSICA",
         data: "#1, #2",
-        expected: "Response successfully sent, chat request from JAMES disappeared, JAMES received the chat request denial from JOHN",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Response successfully sent, chat request from JAMES disappeared, JAMES received the chat request denial from JOHN"
       },
       {
         description: "As JOHN send a chat message to JESSICA",
         data: "#3",
-        expected: "JESSICA received the message from JOHN",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JESSICA received the message from JOHN"
       },
       {
         description: "As JAMES inject a chat message to JOHN",
         data: "#4",
-        expected: "Message not sent",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Message not sent"
       }
     ],
     postConditions: ["JOHN and JESSICA are engaged in chat", "JOHN and JAMES are not engaged in chat"],
@@ -2710,46 +1849,26 @@ var tests =
   {
     title: "Client End Chat",
     caseId: "ENDCHT-OK",
-    priority: "High",
-    moduleName: "Client can end chat with another client",
     rfcReferences: [],
-    testTitle: "End chat between clients",
     description: "User ends an ongoing chat",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and busy", "JAMES is logged in and busy", "JOHN and JAMES are chatting with each other"],
     dependencies: [],
     steps: [
       {
         description: "As JOHN click End Chat button",
         data: "#1",
-        expected: "Chat is ended",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Chat is ended"
       },
       {
         description: "As JOHN request and engage in chat with another contact",
         data: null,
-        expected: "JOHN successfully chatting with another contact",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN successfully chatting with another contact"
       },
       {
         description: "As one of JAMES's contacts request and engage in chat with JAMES",
         data: null,
-        expected: "JAMES successfully chatting with another contact",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES successfully chatting with another contact"
       }
     ],
     postConditions: ["JOHN and JAMES are engaged in chat with other contacts"],
@@ -2766,46 +1885,26 @@ var tests =
   {
     title: "Client End Chat",
     caseId: "ENDCHT-UO",
-    priority: "High",
-    moduleName: "Client can end chat with another client",
     rfcReferences: [],
-    testTitle: "End chat between clients",
     description: "Chat ends because one of the users engaged in chat became offline",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and busy", "JAMES is logged in and busy", "JOHN and JAMES are chatting with each other"],
     dependencies: [],
     steps: [
       {
         description: "As JAMES close client",
         data: null,
-        expected: "JAMES is logged off",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES is logged off"
       },
       {
         description: "Wait for 30 seconds, then as JOHN check JAMES's status on the next heartbeat",
         data: "#1",
-        expected: "JAMES's status is offline, JOHN is no longer chatting with JAMES",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JAMES's status is offline, JOHN is no longer chatting with JAMES"
       },
       {
         description: "As JOHN request and engage in chat with another contact",
         data: null,
-        expected: "JOHN successfully chatting with another contact",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN successfully chatting with another contact"
       }
     ],
     postConditions: ["JOHN is engaged in chat with another contact"],
@@ -2822,38 +1921,21 @@ var tests =
   {
     title: "Bad Request to Server",
     caseId: "SRVBAD-1",
-    priority: "High",
-    moduleName: "Server ignores bad requests",
     rfcReferences: [],
-    testTitle: "Send a bad request to server",
     description: "Server can ignores bad requests",
     target: "Server",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in"],
     dependencies: [],
     steps: [
       {
         description: "As JOHN inject a message to server",
         data: "#1",
-        expected: "Server error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server error"
       },
       {
         description: "Check JOHN's heartbeats",
         data: null,
-        expected: "Server responding OK",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server responding OK"
       }
     ],
     postConditions: ["Server is operational"],
@@ -2870,38 +1952,21 @@ var tests =
   {
     title: "Bad Request to Server",
     caseId: "SRVBAD-2",
-    priority: "High",
-    moduleName: "Server ignores bad requests",
     rfcReferences: [],
-    testTitle: "Send a bad request to server",
     description: "Server can ignores bad requests",
     target: "Server",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in"],
     dependencies: [],
     steps: [
       {
         description: "As JOHN inject a message to server",
         data: "#1",
-        expected: "Server error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server error"
       },
       {
         description: "Check JOHN's heartbeats",
         data: null,
-        expected: "Server responding OK",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server responding OK"
       }
     ],
     postConditions: ["Server is operational"],
@@ -2918,38 +1983,21 @@ var tests =
   {
     title: "Bad Request to Server",
     caseId: "SRVBAD-3",
-    priority: "High",
-    moduleName: "Server ignores bad requests",
     rfcReferences: [],
-    testTitle: "Send a bad request to server",
     description: "Server can ignores bad requests",
     target: "Server",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in"],
     dependencies: [],
     steps: [
       {
         description: "As JOHN inject a message to server",
         data: "#1",
-        expected: "Server error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server error"
       },
       {
         description: "Check JOHN's heartbeats",
         data: null,
-        expected: "Server responding OK",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Server responding OK"
       }
     ],
     postConditions: ["Server is operational"],
@@ -2966,38 +2014,21 @@ var tests =
   {
     title: "Bad Request to Client",
     caseId: "CLNBAD-1",
-    priority: "High",
-    moduleName: "Client ignores bad requests",
     rfcReferences: [],
-    testTitle: "Send a bad request to client",
     description: "Client can ignore bad requests",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
     dependencies: [],
     steps: [
       {
         description: "As JOHN inject a message to JAMES",
         data: "#1",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       },
       {
         description: "As JOHN request and engage in chat with JAMES",
         data: null,
-        expected: "JOHN and JAMES are successfully chatting with each other",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN and JAMES are successfully chatting with each other"
       }
     ],
     postConditions: ["JOHN and JAMES are engaged in chat with each other"],
@@ -3014,38 +2045,21 @@ var tests =
   {
     title: "Bad Request to Client",
     caseId: "CLNBAD-1",
-    priority: "High",
-    moduleName: "Client ignores bad requests",
     rfcReferences: [],
-    testTitle: "Send a bad request to client",
     description: "Client can ignore bad requests",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
     dependencies: [],
     steps: [
       {
         description: "As JOHN inject a message to JAMES",
         data: "#1",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       },
       {
         description: "As JOHN request and engage in chat with JAMES",
         data: null,
-        expected: "JOHN and JAMES are successfully chatting with each other",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN and JAMES are successfully chatting with each other"
       }
     ],
     postConditions: ["JOHN and JAMES are engaged in chat with each other"],
@@ -3062,38 +2076,21 @@ var tests =
   {
     title: "Bad Request to Client",
     caseId: "CLNBAD-1",
-    priority: "High",
-    moduleName: "Client ignores bad requests",
     rfcReferences: [],
-    testTitle: "Send a bad request to client",
     description: "Client can ignore bad requests",
     target: "Client",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
     preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
     dependencies: [],
     steps: [
       {
         description: "As JOHN inject a message to JAMES",
         data: "#1",
-        expected: "Client error",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "Client error"
       },
       {
         description: "As JOHN request and engage in chat with JAMES",
         data: null,
-        expected: "JOHN and JAMES are successfully chatting with each other",
-        actual: null,
-        status: null,
-        notes: null
+        expected: "JOHN and JAMES are successfully chatting with each other"
       }
     ],
     postConditions: ["JOHN and JAMES are engaged in chat with each other"],

@@ -156,18 +156,6 @@
     <script type="text/template" id="testCaseTemplate">
       <h3><%= caseId %></h3>
       <table class="table table-bordered">
-        <!--<tr>
-          <th style="width:20%;">Test Case ID:</th>
-          <td><%= caseId %></td>
-          <!--<th>Test Designed by:</th>
-          <td><%= designed.by %></td>--><!--
-        </tr>-->
-        <!--<tr>
-          <th>Test Priority:</th>
-          <td><%= priority %></td>
-          <!--<th>Test Designed date:</th>
-          <td><%= designed.date %></td>--><!--
-        </tr>-->
         <tr>
           <th style="width:20%;">RFC References:</th>
           <td>
@@ -178,26 +166,14 @@
               <% } %>
             <% } %>
           </td>
-          <!--<th>Test Executed by:</th>
-          <td><%= executed.by %></td>-->
         </tr>
-        <!--<tr>
-          <th>Test Title:</th>
-          <td><%= testTitle %></td>
-          <!--<th>Test Execution date:</th>
-          <td><%= executed.date %></td>--><!--
-        </tr>-->
         <tr>
           <th>Description:</th>
           <td><%= description %></td>
-          <!--<th></th>
-          <td></td>-->
         </tr>
         <tr>
           <th>Target:</th>
           <td><%= target %></td>
-          <!--<th></th>
-          <td></td>-->
         </tr>
       </table>
 
@@ -232,9 +208,6 @@
           <th>Description</th>
           <th>Data</th>
           <th>Expected Result</th>
-          <!--<th>Actual Result</th>
-          <th>Status (Pass/Fail)</th>
-          <th>Notes</th>-->
         </tr>
         <% for(var i=0; i<steps.length; ++i) { %>
           <tr>
@@ -242,9 +215,6 @@
             <td><%= steps[i].description %></td>
             <td><code><%= steps[i].data %></code></td>
             <td><%= steps[i].expected %></td>
-            <!--<td><%= steps[i].actual %></td>
-            <td><%= steps[i].status %></td>
-            <td><%= steps[i].notes %></td>-->
           </tr>
         <% } %>
       </table>
