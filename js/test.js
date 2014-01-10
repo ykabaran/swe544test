@@ -1,6 +1,8 @@
 $(function() {
   var testCaseList = [];
+  var counter = 0;
   $.each(tests, function(key, value){
+    value.title = (++counter)+". " + value.title;
     var testItem = '<li class="menuTestCase menuItem" test-id="'+key+'"><a href="#" onClick="return false;">'+value.title+'</a></li>'
     testCaseList.push(testItem);
   });
