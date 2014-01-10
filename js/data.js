@@ -2021,93 +2021,16 @@ var tests =
   },
   
   
-  /* TODO: clean up the client to client test cases */
-  
-  "CCCHRQD": 
-  {
-    title: "Client Chat Request Deny",
-    caseId: "CCCHRQD",
-    priority: "High",
-    moduleName: "Deny chat request from contact",
-    testTitle: "Chat request to client",
-    description: "Test if clients can deny chat requests",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
-    preConditions: ["User is logged in", "Second user is logged in", "Two users are contacts"],
-    dependencies: ["Client Contact Request"],
-    steps: [
-      {
-        description: "User tries to send a text message",
-        data: "#1",
-        expected: "Messaging without an accepted request is not allowed",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "User sends a chat request",
-        data: "#2",
-        expected: "Request is sent to the second user",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "Second user recieves and denies the chat request",
-        data: "#3",
-        expected: "Response is sent to the first user",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "First user tries to send a text message",
-        data: "#4",
-        expected: "Messaging without an accepted request is not allowed",
-        actual: null,
-        status: null,
-        notes: null
-      }
-    ],
-    postConditions: ["Users are not in chat"],
-    testData: [
-      {
-        id: "#1",
-        request: 'CCCHAT\n{\n  "seqid": xxxx,\n  "message": "Hey, what\'s up?"\n}',
-        response: 'CCLERR\n{\n  "seqid": xxxx,\n  "message": "Chat consent is not given"\n}'
-      },
-      {
-        id: "#2",
-        request: 'CCCHRQ\n{\n  "seqid": yyyy,\n  "userid": "foobar"\n}',
-        response: 'CCLACK\n{\n  "seqid": yyyy\n}'
-      },
-      {
-        id: "#3",
-        request: 'CCCHRS\n{\n  "seqid": zzzz,\n  "response": "deny"\n}',
-        response: 'CCLACK\n{\n  "seqid": zzzz\n}'
-      },
-      {
-        id: "#4",
-        request: 'CCCHAT\n{\n  "seqid": aaaa,\n  "message": "Hey, what\'s up?"\n}',
-        response: 'CCLERR\n{\n  "seqid": aaaa,\n  "message": "Chat consent is not given"\n}'
-      }
-    ]
-  },
-  
-  "CCCHRQ": 
+  "CHTREQ-OK1": 
   {
     title: "Client Chat Request",
-    caseId: "CCCHRQ",
+    caseId: "CHTREQ-OK1",
     priority: "High",
     moduleName: "Accept chat request from contact",
+    rfcReferences: [],
     testTitle: "Chat request to client",
-    description: "Test if clients can accept chat requests and start messaging",
+    description: "A user sends a chat request to a contact",
+    target: "Client",
     designed: {
       by: null,
       date: null
@@ -2116,27 +2039,27 @@ var tests =
       by: null,
       date: null
     },
-    preConditions: ["User is logged in", "Second user is logged in", "Two users are contacts"],
-    dependencies: ["Client Contact Request"],
+    preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN and JAMES are both available"],
+    dependencies: ["CONREQ-OK"],
     steps: [
       {
-        description: "User sends a chat request",
+        description: "As JOHN send a chat request to JAMES",
         data: "#1",
-        expected: "Request is sent to the second user",
+        expected: "Request successfully sent",
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "Second user recieves and accepts the chat request",
+        description: "As JAMES receive and accept the chat request",
         data: "#2",
-        expected: "Response is sent to the first user",
+        expected: "Response successfully sent",
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "First user enters a message",
+        description: "As JOHN enter a message",
         data: "How is it going?",
         expected: null,
         actual: null,
@@ -2144,15 +2067,15 @@ var tests =
         notes: null
       },
       {
-        description: "First user tries to send the message",
+        description: "As JOHN send the message",
         data: "#3",
-        expected: "Second user recieves the message",
+        expected: "JAMES receives the message",
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "Second user enters a message",
+        description: "As JAMES enter a message",
         data: "Just testing. How about you?",
         expected: null,
         actual: null,
@@ -2160,15 +2083,15 @@ var tests =
         notes: null
       },
       {
-        description: "Second user tries to send the message",
+        description: "As JAMES send the message",
         data: "#4",
-        expected: "First user recieves the message",
+        expected: "JOHN receives the message",
         actual: null,
         status: null,
         notes: null
       }
     ],
-    postConditions: ["Users are engaged in chat"],
+    postConditions: ["JOHN and JAMES are engaged in chat"],
     testData: [
       {
         id: "#1",
@@ -2193,14 +2116,16 @@ var tests =
     ]
   },
   
-  "CCCHRQR": 
+  "CHTREQ-OK2": 
   {
-    title: "Client Chat Request Reject",
-    caseId: "CCCHRQR",
+    title: "Client Chat Request",
+    caseId: "CHTREQ-OK2",
     priority: "High",
-    moduleName: "Reject illegal chat requests",
+    moduleName: "Accept chat request from contact",
+    rfcReferences: [],
     testTitle: "Chat request to client",
-    description: "Test if clients reject to send or acknowledge illegal chat requests",
+    description: "A user sends a accepts a chat request and immediately chats",
+    target: "Client",
     designed: {
       by: null,
       date: null
@@ -2209,241 +2134,67 @@ var tests =
       by: null,
       date: null
     },
-    preConditions: ["User 1 (foobar) is logged in and available", 
-      "User 2 is logged in and available", 
-      "User 3 is logged in and busy",
-      "User 1 and User 2 are not contacts or each other",
-      "User 1 and User 3 are contacts of each other"],
-    dependencies: ["Client Contact Request"],
+    preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES", "JAMES accepted the chat request from JOHN", "JOHN and JAMES did not send each other any messages"],
+    dependencies: ["CHTREQ-OK1"],
     steps: [
       {
-        description: "User 1 sends a chat request to User 2 (force Client to do this)",
-        data: "#1",
-        expected: "Non-contact users cannot send each other chat requests",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "User 1 sends a chat request to User 3",
-        data: "#2",
-        expected: "User is not available",
-        actual: null,
-        status: null,
-        notes: null
-      }
-    ],
-    postConditions: ["Users are not engaged in chat"],
-    testData: [
-      {
-        id: "#1",
-        request: 'CCCHRQ\n{\n  "seqid": xxxx,\n  "userid": "foobar"\n}',
-        response: 'CCLERR\n{\n  "seqid": xxxx,\n  "message": "User not in contact list"\n}'
-      },
-      {
-        id: "#2",
-        request: 'CCCHRQ\n{\n  "seqid": yyyy,\n  "userid": "foobar"\n}',
-        response: 'CCLERR\n{\n  "seqid": yyyy,\n  "message": "User not available"\n}'
-      }
-    ]
-  },
-  
-  "CCCHRQB": 
-  {
-    title: "Client Chat Request Sender Busy",
-    caseId: "CCCHRQB",
-    priority: "High",
-    moduleName: "Prevent illegal chat requests",
-    testTitle: "Chat request to client from busy sender",
-    description: "Test if clients reject to send or acknowledge illegal chat requests",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
-    preConditions: ["User 1 (foobar) is logged in and busy", 
-      "User 2 is logged in and available", 
-      "User 1 and User 2 are contacts of each other"],
-    dependencies: ["Client Contact Request"],
-    steps: [
-      {
-        description: "User 1 sends a chat request to User 2",
-        data: null,
-        expected: "Cannot send chat request when busy",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "User 1 sends a chat request to User 2 (force Client to do this)",
-        data: "#1",
-        expected: "Request acknowledged",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "User 2 accepts chat request",
-        data: "#2",
-        expected: "User 1 is not available",
-        actual: null,
-        status: null,
-        notes: null
-      }
-    ],
-    postConditions: ["Users are not engaged in chat"],
-    testData: [
-      {
-        id: "#1",
-        request: 'CCCHRQ\n{\n  "seqid": xxxx,\n  "userid": "foobar"\n}',
-        response: 'CCLACK\n{\n  "seqid": xxxx\n}'
-      },
-      {
-        id: "#2",
-        request: 'CCCHRS\n{\n  "seqid": yyyy,\n  "response": "accept"\n}',
-        response: 'CCLERR\n{\n  "seqid": yyyy,\n  "message": "User not available"\n}'
-      }
-    ]
-  },
-  
-  "CCENDC": 
-  {
-    title: "Client End Chat",
-    caseId: "CCENDC",
-    priority: "High",
-    moduleName: "Client can end chat with another client",
-    testTitle: "End chat between clients",
-    description: "Test if clients end chatting and start chatting with other people",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
-    preConditions: ["User 1 (foobar) is logged in and busy", 
-      "User 2 (foobar2) is logged in and busy", 
-      "User 1 and User 2 are chatting with each other"],
-    dependencies: ["Client Contact Request"],
-    steps: [
-      {
-        description: "User 1 ends chat",
-        data: "#1",
-        expected: "Chat is ended and both users are available",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "User 1 sends a chat request to another contact",
-        data: "#2",
-        expected: "Request acknowledged",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "User 2 sends a chat request to another contact",
-        data: "#3",
-        expected: "Request acknowledged",
-        actual: null,
-        status: null,
-        notes: null
-      }
-    ],
-    postConditions: ["Users are not longer engaged in chat", "Users are engaged in chat with other users"],
-    testData: [
-      {
-        id: "#1",
-        request: 'CCENDC\n{\n  "seqid": xxxx\n}',
-        response: 'CCLACK\n{\n  "seqid": xxxx\n}'
-      },
-      {
-        id: "#2",
-        request: 'CCCHRQ\n{\n  "seqid": yyyy,\n  "userid": "foobar"\n}',
-        response: 'CCLACK\n{\n  "seqid": yyyy\n}'
-      },
-      {
-        id: "#3",
-        request: 'CCCHRQ\n{\n  "seqid": zzzz,\n  "userid": "foobar2"\n}',
-        response: 'CCLACK\n{\n  "seqid": zzzz\n}'
-      }
-    ]
-  },
-  
-  "CCENDCO": 
-  {
-    title: "Client End Chat User Offline",
-    caseId: "CCENDCO",
-    priority: "High",
-    moduleName: "Chat ends when one client becomes offline",
-    testTitle: "End chat between clients",
-    description: "Test if clients end chatting when one client is offline",
-    designed: {
-      by: null,
-      date: null
-    },
-    executed: {
-      by: null,
-      date: null
-    },
-    preConditions: ["User 1 (foobar) is logged in and busy", 
-      "User 2 (foobar2) is logged in and busy", 
-      "User 1 and User 2 are chatting with each other"],
-    dependencies: ["Client Contact Request"],
-    steps: [
-      {
-        description: "User 2 becomes offline for longer than 30 seconds",
-        data: null,
+        description: "As JAMES enter a message",
+        data: "Where have you been?",
         expected: null,
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "User 1 sends a heartbeat",
+        description: "As JAMES send the message",
         data: "#1",
-        expected: "User 1 sees User 2 as offline and chat  between clients end",
+        expected: "JOHN receives the message",
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "User 1 sends a chat request to another contact",
+        description: "As JOHN enter a message",
+        data: "Busy trying to graduate, you?",
+        expected: null,
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JOHN send the message",
         data: "#2",
-        expected: "Request acknowledged",
+        expected: "JAMES receives the message",
         actual: null,
         status: null,
         notes: null
       }
     ],
-    postConditions: ["Users are not longer engaged in chat", "User 1 is engaged in chat with another user"],
+    postConditions: ["JOHN and JAMES are engaged in chat"],
     testData: [
       {
         id: "#1",
-        request: 'CHBEAT\n{\n  "seqid": xxxx\n}',
-        response: 'SRVROK\n{\n  "seqid": xxxx,\n  "contacts": [\n    {\n      "userid": "foobar2",\n      "ip": "",\n      "status": "offline",\n      "profile": {\n        "message": "",\n        "location": "",\n        "gender": "",\n        "nationality": ""\n      }\n    }\n  ],\n  "inbox": [],\n  "requests": []\n}'
+        request: 'CCCHAT\n{\n  "seqid": xxxx,\n  "message": "Where have you been?"\n}',
+        response: 'CCLACK\n{\n  "seqid": xxxx\n}'
       },
       {
         id: "#2",
-        request: 'CCCHRQ\n{\n  "seqid": yyyy,\n  "userid": "foobar"\n}',
+        request: 'CCCHAT\n{\n  "seqid": yyyy,\n  "message": "Busy trying to graduate, you?"\n}',
         response: 'CCLACK\n{\n  "seqid": yyyy\n}'
       }
     ]
   },
   
-  "CSBADR": 
+  "CHTREQ-DN1": 
   {
-    title: "Bad Request to Server",
-    caseId: "CSBADR",
+    title: "Client Chat Request Deny",
+    caseId: "CHTREQ-DN1",
     priority: "High",
-    moduleName: "Server ignores bad requests",
-    testTitle: "Send a bad request to server",
-    description: "Test if server can ignore bad requests",
+    moduleName: "Deny chat request from contact",
+    rfcReferences: [],
+    testTitle: "Chat request to client",
+    description: "User denies a chat request from a contact",
+    target: "Client",
     designed: {
       by: null,
       date: null
@@ -2452,62 +2203,679 @@ var tests =
       by: null,
       date: null
     },
-    preConditions: [],
-    dependencies: [],
+    preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
+    dependencies: ["Client Contact Request"],
     steps: [
       {
-        description: "Send an incorrectly formatted request to server",
+        description: "As JAMES receive and deny the chat request from JOHN",
         data: "#1",
-        expected: "Bad request error",
+        expected: "Response successfully sent",
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "Send an invalid request code to server",
+        description: "As JOHN inject a chat message to JAMES",
         data: "#2",
-        expected: "Bad request error",
+        expected: "Client error",
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "Send a request with missing information to server",
+        description: "As JAMES inject a chat message to JOHN",
         data: "#3",
-        expected: "Bad request error",
+        expected: "Client error",
         actual: null,
         status: null,
         notes: null
       }
     ],
-    postConditions: ["Server maintains working condition"],
+    postConditions: ["JOHN and JAMES are not engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRS\n{\n  "seqid": xxxx,\n  "response": "deny"\n}',
+        response: 'CCLACK\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CCCHAT\n{\n  "seqid": yyyy,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLERR\n{\n  "seqid": yyyy\n}'
+      },
+      {
+        id: "#3",
+        request: 'CCCHAT\n{\n  "seqid": zzzz,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLERR\n{\n  "seqid": zzzz\n}'
+      }
+    ]
+  },
+  
+  "CHTREQ-DN2": 
+  {
+    title: "Client Chat Request Deny",
+    caseId: "CHTREQ-DN2",
+    priority: "High",
+    moduleName: "Deny chat request from contact",
+    rfcReferences: [],
+    testTitle: "Chat request to client",
+    description: "User denies a chat request from a contact",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES", "JAMES has denied the chat request from JOHN", "JESSICA is logged in and available", "JESSICA and JOHN are contacts of each other", "MARK is logged in and available", "MARK and JAMES are contacts of each other"],
+    dependencies: ["CHTREQ-DN1"],
+    steps: [
+      {
+        description: "As JOHN engage in chat with JESSICA",
+        data: null,
+        expected: "Successfully chatting",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JAMES engage in chat with MARK",
+        data: null,
+        expected: "Successfully chatting",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["Clients can chat after a denied request"],
+    testData: []
+  },
+  
+  "CHTREQ-NC": 
+  {
+    title: "Client Chat Request Deny",
+    caseId: "CHTREQ-DN1",
+    priority: "High",
+    moduleName: "Deny chat request from contact",
+    rfcReferences: [],
+    testTitle: "Chat request to client",
+    description: "Inject a chat request to a non-contact",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in and available", "MARK is logged in and available", "JOHN and MARK are not contacts of each other"],
+    dependencies: [],
+    steps: [
+      {
+        description: "As JOHN inject a chat request to MARK",
+        data: "#1",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As MARK wait",
+        data: null,
+        expected: "Chat request packet detected, but was not visible to user",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JOHN inject a chat message to MARK",
+        data: "#2",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and MARK are not engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRQ\n{\n  "seqid": xxxx,\n  "userid": "foobar"\n}',
+        response: 'CCLACK\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CCCHAT\n{\n  "seqid": yyyy,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLERR\n{\n  "seqid": yyyy\n}'
+      }
+    ]
+  },
+
+  "CHTREQ-OU": 
+  {
+    title: "Client Chat Request Deny",
+    caseId: "CHTREQ-OU",
+    priority: "High",
+    moduleName: "Deny chat request from contact",
+    rfcReferences: [],
+    testTitle: "Chat request to client",
+    description: "User becomes offline with a pending chat request",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
+    dependencies: ["Client Contact Request"],
+    steps: [
+      {
+        description: "As JAMES close the client",
+        data: null,
+        expected: "JAMES is logged off",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "Wait for 30 seconds, then as JOHN check JAMES's status on the next heartbeat",
+        data: "#1",
+        expected: "JAMES's status is offline, JOHN is no longer waiting for a response from JAMES",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JAMES are not engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CHBEAT\n{\n  "seqid": xxxx\n}',
+        response: 'SRVROK\n{\n  "seqid": xxxx,\n  "contacts": [\n    {\n      "userid": "james",\n      "ip": "",\n      "status": "offline",\n      "profile": {\n        "message": "livin la vida loca",\n        "location": "the moon",\n        "gender": "M",\n        "nationality": "Turkish"\n      }\n    }\n  ],\n  "inbox": [],\n  "requests": []\n}\n'
+      }
+    ]
+  },
+  
+  "CHTRES-NR": 
+  {
+    title: "Client Chat Request Deny",
+    caseId: "CHTRES-NR",
+    priority: "High",
+    moduleName: "Deny chat request from contact",
+    rfcReferences: [],
+    testTitle: "Chat request to client",
+    description: "Chat request expires",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "There are no outstanding chat requests betweeen JOHN and JAMES"],
+    dependencies: [],
+    steps: [
+      {
+        description: "As JAMES inject an accepted chat response to JOHN",
+        data: "#1",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JAMES inject a chat message to JOHN",
+        data: "#2",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JAMES are not engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRS\n{\n  "seqid": xxxx,\n  "response": "accept"\n}',
+        response: 'CCLERR\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CCCHAT\n{\n  "seqid": yyyy,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLERR\n{\n  "seqid": yyyy\n}'
+      }
+    ]
+  },
+  
+  "CHTREQ-TO": 
+  {
+    title: "Client Chat Request Deny",
+    caseId: "CHTREQ-TO",
+    priority: "High",
+    moduleName: "Deny chat request from contact",
+    rfcReferences: [],
+    testTitle: "Chat request to client",
+    description: "Chat request expires",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
+    dependencies: [],
+    steps: [
+      {
+        description: "Wait for 120 seconds after the chat request was sent",
+        data: null,
+        expected: "JOHN is no longer waiting for a response from JAMES, JAMES can no longer respond to JOHN's chat request",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JAMES inject an accepted chat response to JOHN",
+        data: "#1",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JAMES are not engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRS\n{\n  "seqid": xxxx,\n  "response": "accept"\n}',
+        response: 'CCLERR\n{\n  "seqid": xxxx\n}'
+      }
+    ]
+  },
+  
+  "CHTREQ-BU": 
+  {
+    title: "Client Chat Request Sender Busy",
+    caseId: "CHTREQ-BU",
+    priority: "High",
+    moduleName: "Prevent illegal chat requests",
+    rfcReferences: [],
+    testTitle: "Chat request to client from busy sender",
+    description: "User sends a chat request to a busy user",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in and available", "JAMES is logged in and busy", "JOHN and JAMES are contacts of each other"],
+    dependencies: ["CHTREQ-OK"],
+    steps: [
+      {
+        description: "As JOHN send a chat request to JAMES",
+        data: "#1",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JOHN inject a chat message to JAMES",
+        data: "#2",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JAMES are not engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRQ\n{\n  "seqid": xxxx,\n  "userid": "foobar"\n}',
+        response: 'CCLERR\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CCCHAT\n{\n  "seqid": yyyy,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLERR\n{\n  "seqid": yyyy\n}'
+      }
+    ]
+  },
+  
+  "CHTREQ-BR": 
+  {
+    title: "Client Chat Request Sender Busy",
+    caseId: "CHTREQ-BU",
+    priority: "High",
+    moduleName: "Prevent illegal chat requests",
+    rfcReferences: [],
+    testTitle: "Chat request to client from busy sender",
+    description: "User accepts a chat request but the requesting user is busy",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JESSICA is logged in and available", "JOHN and JAMES are contacts of each other", "JOHN and JESSICA are contacts of each other", "JOHN has sent contact requests to both JAMES and JESSICA"],
+    dependencies: ["CHTREQ-OK"],
+    steps: [
+      {
+        description: "As JESSICA accept the chat request from JOHN",
+        data: "#1",
+        expected: "Response successfully sent",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JOHN send a chat message to JESSICA",
+        data: "#2",
+        expected: "JESSICA received the message from JOHN",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JAMES accept the chat request from JOHN",
+        data: "#3",
+        expected: "Response could not be sent",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JAMES inject a chat message to JOHN",
+        data: "#4",
+        expected: "Message not sent",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JESSICA are engaged in chat", "JOHN and JAMES are not engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRS\n{\n  "seqid": xxxx,\n  "response": "accept"\n}',
+        response: 'CCLACK\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CCCHAT\n{\n  "seqid": yyyy,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLACK\n{\n  "seqid": yyyy\n}'
+      },
+      {
+        id: "#3",
+        request: 'CCCHRS\n{\n  "seqid": zzzz,\n  "response": "accept"\n}',
+        response: 'CCLERR\n{\n  "seqid": zzzz\n}'
+      },
+      {
+        id: "#4",
+        request: 'CCCHAT\n{\n  "seqid": aaaa,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLERR\n{\n  "seqid": aaaa\n}'
+      }
+    ]
+  },
+  
+  "CHTREQ-MR": 
+  {
+    title: "Client Chat Request Sender Busy",
+    caseId: "CHTREQ-MR",
+    priority: "High",
+    moduleName: "Prevent illegal chat requests",
+    rfcReferences: [],
+    testTitle: "Chat request to client from busy sender",
+    description: "User receives chat requests from multiple contacts",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JESSICA is logged in and available", "JOHN and JAMES are contacts of each other", "JOHN and JESSICA are contacts of each other", "JAMES and JESSICA both sent contact requests to JOHN"],
+    dependencies: ["CHTREQ-OK"],
+    steps: [
+      {
+        description: "As JOHN accept chat request from JESSICA",
+        data: "#1, #2",
+        expected: "Response successfully sent, chat request from JAMES disappeared, JAMES received the chat request denial from JOHN",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JOHN send a chat message to JESSICA",
+        data: "#3",
+        expected: "JESSICA received the message from JOHN",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JAMES inject a chat message to JOHN",
+        data: "#4",
+        expected: "Message not sent",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JESSICA are engaged in chat", "JOHN and JAMES are not engaged in chat"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRS\n{\n  "seqid": xxxx,\n  "response": "accept"\n}',
+        response: 'CCLACK\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CCCHRS\n{\n  "seqid": yyyy,\n  "response": "deny"\n}',
+        response: 'CCLACK\n{\n  "seqid": yyyy\n}'
+      },
+      {
+        id: "#3",
+        request: 'CCCHAT\n{\n  "seqid": zzzz,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLACK\n{\n  "seqid": zzzz\n}'
+      },
+      {
+        id: "#4",
+        request: 'CCCHAT\n{\n  "seqid": aaaa,\n  "message": "Hey, what\'s up?"\n}',
+        response: 'CCLERR\n{\n  "seqid": aaaa\n}'
+      }
+    ]
+  },
+  
+  "ENDCHT-OK": 
+  {
+    title: "Client End Chat",
+    caseId: "ENDCHT-OK",
+    priority: "High",
+    moduleName: "Client can end chat with another client",
+    rfcReferences: [],
+    testTitle: "End chat between clients",
+    description: "User ends an ongoing chat",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in and busy", "JAMES is logged in and busy", "JOHN and JAMES are chatting with each other"],
+    dependencies: [],
+    steps: [
+      {
+        description: "As JOHN click End Chat button",
+        data: "#1",
+        expected: "Chat is ended",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JOHN request and engage in chat with another contact",
+        data: null,
+        expected: "JOHN successfully chatting with another contact",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As one of JAMES's contacts request and engage in chat with JAMES",
+        data: null,
+        expected: "JAMES successfully chatting with another contact",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JAMES are engaged in chat with other contacts"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCENDC\n{\n  "seqid": xxxx\n}',
+        response: 'CCLACK\n{\n  "seqid": xxxx\n}'
+      }
+    ]
+  },
+  
+  "ENDCHT-UO": 
+  {
+    title: "Client End Chat",
+    caseId: "ENDCHT-UO",
+    priority: "High",
+    moduleName: "Client can end chat with another client",
+    rfcReferences: [],
+    testTitle: "End chat between clients",
+    description: "Chat ends because one of the users engaged in chat became offline",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in and busy", "JAMES is logged in and busy", "JOHN and JAMES are chatting with each other"],
+    dependencies: [],
+    steps: [
+      {
+        description: "As JAMES close client",
+        data: null,
+        expected: "JAMES is logged off",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "Wait for 30 seconds, then as JOHN check JAMES's status on the next heartbeat",
+        data: "#1",
+        expected: "JAMES's status is offline, JOHN is no longer chatting with JAMES",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JOHN request and engage in chat with another contact",
+        data: null,
+        expected: "JOHN successfully chatting with another contact",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN is engaged in chat with another contact"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CHBEAT\n{\n  "seqid": xxxx\n}',
+        response: 'SRVROK\n{\n  "seqid": xxxx,\n  "contacts": [\n    {\n      "userid": "james",\n      "ip": "",\n      "status": "offline",\n      "profile": {\n        "message": "livin la vida loca",\n        "location": "the moon",\n        "gender": "M",\n        "nationality": "Turkish"\n      }\n    }\n  ],\n  "inbox": [],\n  "requests": []\n}\n'
+      }
+    ]
+  },
+  
+  "SRVBAD-1": 
+  {
+    title: "Bad Request to Server",
+    caseId: "SRVBAD-1",
+    priority: "High",
+    moduleName: "Server ignores bad requests",
+    rfcReferences: [],
+    testTitle: "Send a bad request to server",
+    description: "Server can ignores bad requests",
+    target: "Server",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in"],
+    dependencies: [],
+    steps: [
+      {
+        description: "As JOHN inject a message to server",
+        data: "#1",
+        expected: "Server error",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "Check JOHN's heartbeats",
+        data: null,
+        expected: "Server responding OK",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["Server is operational"],
     testData: [
       {
         id: "#1",
         request: 'CHBEAT\n"seqid": xxxx',
-        response: 'SRVERR\n{\n  "seqid": -1,\n  "message": "Bad request"\n}'
-      },
-      {
-        id: "#2",
-        request: 'CDABRQ\n{\n  "seqid": xxxx\n}',
-        response: 'SRVERR\n{\n  "seqid": -1,\n  "message": "Bad request"\n}'
-      },
-      {
-        id: "#3",
-        request: 'CCNREQ\n{\n  "seqid": zzzz\n}',
-        response: 'SRVERR\n{\n  "seqid": zzzz,\n  "message": "Bad request"\n}'
+        response: 'SRVERR\n{\n  "seqid": ????\n}'
       }
     ]
   },
   
-  "CCBADR": 
+  "SRVBAD-2": 
   {
-    title: "Bad Request to Client",
-    caseId: "CCBADR",
+    title: "Bad Request to Server",
+    caseId: "SRVBAD-2",
     priority: "High",
-    moduleName: "Client ignores bad requests",
-    testTitle: "Send a bad request to client",
-    description: "Test if client can ignore bad requests",
+    moduleName: "Server ignores bad requests",
+    rfcReferences: [],
+    testTitle: "Send a bad request to server",
+    description: "Server can ignores bad requests",
+    target: "Server",
     designed: {
       by: null,
       date: null
@@ -2516,62 +2884,142 @@ var tests =
       by: null,
       date: null
     },
-    preConditions: [],
+    preConditions: ["JOHN is logged in"],
     dependencies: [],
     steps: [
       {
-        description: "Send an incorrectly formatted request to client",
+        description: "As JOHN inject a message to server",
         data: "#1",
-        expected: "Bad request error",
+        expected: "Server error",
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "Send an invalid request code to client",
-        data: "#2",
-        expected: "Bad request error",
-        actual: null,
-        status: null,
-        notes: null
-      },
-      {
-        description: "Send a request with missing information to client",
-        data: "#3",
-        expected: "Bad request error",
+        description: "Check JOHN's heartbeats",
+        data: null,
+        expected: "Server responding OK",
         actual: null,
         status: null,
         notes: null
       }
     ],
-    postConditions: ["Client maintains working condition"],
+    postConditions: ["Server is operational"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CDABRQ\n{\n  "seqid": xxxx\n}',
+        response: 'SRVERR\n{\n  "seqid": ????\n}'
+      }
+    ]
+  },
+  
+  "SRVBAD-3": 
+  {
+    title: "Bad Request to Server",
+    caseId: "SRVBAD-3",
+    priority: "High",
+    moduleName: "Server ignores bad requests",
+    rfcReferences: [],
+    testTitle: "Send a bad request to server",
+    description: "Server can ignores bad requests",
+    target: "Server",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in"],
+    dependencies: [],
+    steps: [
+      {
+        description: "As JOHN inject a message to server",
+        data: "#1",
+        expected: "Server error",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "Check JOHN's heartbeats",
+        data: null,
+        expected: "Server responding OK",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["Server is operational"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCNREQ\n{\n  "seqid": xxxx\n}',
+        response: 'SRVERR\n{\n  "seqid": xxxx\n}'
+      }
+    ]
+  },
+  
+  "CLNBAD-1": 
+  {
+    title: "Bad Request to Client",
+    caseId: "CLNBAD-1",
+    priority: "High",
+    moduleName: "Client ignores bad requests",
+    rfcReferences: [],
+    testTitle: "Send a bad request to client",
+    description: "Client can ignore bad requests",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
+    dependencies: [],
+    steps: [
+      {
+        description: "As JOHN inject a message to JAMES",
+        data: "#1",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
+      },
+      {
+        description: "As JOHN request and engage in chat with JAMES",
+        data: null,
+        expected: "JOHN and JAMES are successfully chatting with each other",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JAMES are engaged in chat with each other"],
     testData: [
       {
         id: "#1",
         request: 'CCCHAT\n"seqid": xxxx',
-        response: 'CCLERR\n{\n  "seqid": -1,\n  "message": "Bad request"\n}'
-      },
-      {
-        id: "#2",
-        request: 'CDABRQ\n{\n  "seqid": yyyy\n}',
-        response: 'CCLERR\n{\n  "seqid": -1,\n  "message": "Bad request"\n}'
-      },
-      {
-        id: "#3",
-        request: 'CCCHAT\n{\n  "seqid": zzzz\n}',
-        response: 'CCLERR\n{\n  "seqid": zzzz,\n  "message": "Bad request"\n}'
+        response: 'CCLERR\n{\n  "seqid": ????\n}'
       }
     ]
   },
   
-  "CLSTRQ": 
+  "CLNBAD-2": 
   {
-    title: "Client Lost Requests",
-    caseId: "CLSTRQ",
+    title: "Bad Request to Client",
+    caseId: "CLNBAD-1",
     priority: "High",
-    moduleName: "Lost requests are handled like errors",
-    testTitle: "Test Lost Reqeusts for Client",
-    description: "Test if client can recover from lost requests",
+    moduleName: "Client ignores bad requests",
+    rfcReferences: [],
+    testTitle: "Send a bad request to client",
+    description: "Client can ignore bad requests",
+    target: "Client",
     designed: {
       by: null,
       date: null
@@ -2580,37 +3028,80 @@ var tests =
       by: null,
       date: null
     },
-    preConditions: [],
+    preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
     dependencies: [],
     steps: [
       {
-        description: "Send a request to a client or a server (make sure no response comes back)",
+        description: "As JOHN inject a message to JAMES",
         data: "#1",
-        expected: "No response",
+        expected: "Client error",
         actual: null,
         status: null,
         notes: null
       },
       {
-        description: "Client times out and interprets it as an error",
-        data: "#2",
-        expected: "Client displays an error message",
+        description: "As JOHN request and engage in chat with JAMES",
+        data: null,
+        expected: "JOHN and JAMES are successfully chatting with each other",
         actual: null,
         status: null,
         notes: null
       }
     ],
-    postConditions: ["Client maintains working condition"],
+    postConditions: ["JOHN and JAMES are engaged in chat with each other"],
     testData: [
       {
         id: "#1",
-        request: 'RQCODE\n{\n  "seqid": xxxx,\n  ...\n}',
-        response: null
+        request: 'CDABRQ\n{\n  "seqid": xxxx\n}',
+        response: 'CCLERR\n{\n  "seqid": ????\n}'
+      }
+    ]
+  },
+  
+  "CLNBAD-3": 
+  {
+    title: "Bad Request to Client",
+    caseId: "CLNBAD-1",
+    priority: "High",
+    moduleName: "Client ignores bad requests",
+    rfcReferences: [],
+    testTitle: "Send a bad request to client",
+    description: "Client can ignore bad requests",
+    target: "Client",
+    designed: {
+      by: null,
+      date: null
+    },
+    executed: {
+      by: null,
+      date: null
+    },
+    preConditions: ["JOHN is logged in and available", "JAMES is logged in and available", "JOHN and JAMES are contacts of each other"],
+    dependencies: [],
+    steps: [
+      {
+        description: "As JOHN inject a message to JAMES",
+        data: "#1",
+        expected: "Client error",
+        actual: null,
+        status: null,
+        notes: null
       },
       {
-        id: "#2",
-        request: null,
-        response: 'XXXERR\n{\n  "seqid": xxxx,\n  "message": "No response"\n}'
+        description: "As JOHN request and engage in chat with JAMES",
+        data: null,
+        expected: "JOHN and JAMES are successfully chatting with each other",
+        actual: null,
+        status: null,
+        notes: null
+      }
+    ],
+    postConditions: ["JOHN and JAMES are engaged in chat with each other"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRQ\n{\n  "seqid": xxxx\n}',
+        response: 'CCLERR\n{\n  "seqid": xxxx\n}'
       }
     ]
   }
