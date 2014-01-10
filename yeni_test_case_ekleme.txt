@@ -1,48 +1,30 @@
 Yeni bir test case eklemek icin:
 
 js/data.js altindaki tests objesine yeni bir object eklenir
-bu objede cogu alani artik gostermiyorum ama karar degistirirsek diye kaldirmadim, biraz kalabalik yapiyorlar o yuzden
-aslinda basit bir json objesi string ve string arraylerden olusan, bos stringler icin null yazabilirsin ama bos arrayler icin [] kullanman gerekiyor
+aslinda basit bir json objesi string ve string arraylerden olusan, bos stringler icin null yazabilirsin ama bos arrayler icin [] kullanilmasi gerekiyor
 
 	var tests = {
 		...,
 		
 		"LOGIN-OK": 
 		  {
-			title: "Client Login", // no longer displayed
+			title: "Client Login"
 			caseId: "LOGIN-OK",
-			priority: "High", // no longer displayed
-			moduleName: "Client login screen", // no longer displayed
 			rfcReferences: ["2.1.3.2", "3.1.3", "3.1.4", "CLOGIN: Client Login"],
-			testTitle: "Verify login with valid username and password", // no longer displayed
 			description: "Login with valid parameters",
 			target: "Server, Client",
-			designed: { // not used
-			  by: null,
-			  date: null
-			},
-			executed: { // not used
-			  by: null,
-			  date: null
-			},
 			preConditions: ["JOHN is registered"],
 			dependencies: ["RGSTR-OK"],
 			steps: [
 			  {
 				description: "Click Login button",
 				data: "#1",
-				expected: "JOHN is logged in",
-				actual: null, // not used
-				status: null, // not used
-				notes: null // not used
+				expected: "JOHN is logged in"
 			  },
 			  {
 				description: "Observe sent requests with Wireshark for 30 seconds",
 				data: null,
-				expected: "At least 2 client heartbeat requests are caught",
-				actual: null, // not used
-				status: null, // not used
-				notes: null // not used
+				expected: "At least 2 client heartbeat requests are caught"
 			  }
 			],
 			postConditions: ["JOHN is logged in", "Client is sending heartbeats"],
@@ -58,9 +40,3 @@ aslinda basit bir json objesi string ve string arraylerden olusan, bos stringler
 		
 		...
 	};
-	
-daha sonra index.html altinda 37. satirdaki <li>... Test Cases ...</li> altina yeni bir <li></li> eklenir
-
-	<li class="menuTestCase menuItem" test-id="LOGIN-OK"><a href="#" onClick="return false;">LOGIN-OK</a></li>
-	
-user-id custom attribute yerine tests objesindeki key yazilir, <a> tagi altina menude gorulmesi istenilen herhangi bir title yazilabilir
