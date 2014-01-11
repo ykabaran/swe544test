@@ -2233,7 +2233,7 @@ var tests =
   
   "STRESS": 
   {
-    title: "Server Stress Testing",
+    title: "Server Stress Testing",
     caseId: "STRESS",
     rfcReferences: ["3.2.2"],
     description: "Server can handle many concurrent users",
@@ -2311,7 +2311,7 @@ var tests =
   "CONREQ-SELF": 
   {
     inactive: true,
-    title: "Sending Contact Request To Self",
+    title: "Sending A Contact Request To Self",
     caseId: "CONREQ-SELF",
     rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
     description: "User cannot send a contact request to himself",
