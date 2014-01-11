@@ -993,12 +993,17 @@ var tests =
         expected: "Request received"
       },
       {
-        description: "As JAMES deny the request and repeat the steps 3 times",
+        description: "As JAMES deny the request",
         data: null,
-        expected: "Request received"
+        expected: "Request denied successfully"
+      },
+      {
+        description: "Go back to the first step and repeat for 3 times",
+        data: null,
+        expected: "All steps successful"
       }
     ],
-    postConditions: ["JAMES received a contact request from JOHN"],
+    postConditions: ["JAMES could send multiple contact requests to JOHN"],
     testData: [
       {
         id: "#1",
@@ -2244,17 +2249,11 @@ var tests =
       {
         description: "Randomly log in and out of the clients, and watch heartbeat requests with Wireshark",
         data: null,
-        expected: "Heartbeat requests and responses are successful"
+        expected: "All heartbeat responses are successful and accurate"
       }
     ],
     postConditions: ["Server is operational"],
-    testData: [
-      {
-        id: "#1",
-        request: 'CCCHRQ\n{\n  "seqid": xxxx\n}',
-        response: 'CCLERR\n{\n  "seqid": xxxx\n}'
-      }
-    ]
+    testData: []
   }
 };
 
