@@ -2363,7 +2363,7 @@ var tests =
       },
       {
         description: "As JOHN wait",
-        data: "#2",
+        data: null,
         expected: "No chat request from JOHN is received"
       }
     ],
