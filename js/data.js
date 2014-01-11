@@ -663,7 +663,7 @@ var tests =
       {
         description: "Click Find User button",
         data: "#1",
-        expected: "All of the mentioned users are returned"
+        expected: "All of the mentioned users are returned (JOHN may or may not be returned)"
       }
     ],
     postConditions: ["All of the mentioned users are found with search"],
@@ -1689,7 +1689,7 @@ var tests =
     description: "User becomes offline with a pending chat request",
     target: "Client",
     preConditions: ["JOHN is logged in", "JAMES is logged in", "JOHN and JAMES are contacts of each other", "JOHN sent a chat request to JAMES"],
-    dependencies: ["Client Contact Request"],
+    dependencies: ["CONREQ-OK"],
     steps: [
       {
         description: "As JAMES close the client",
@@ -2233,7 +2233,7 @@ var tests =
   
   "STRESS": 
   {
-    title: "ServerÂ StressÂ Testing",
+    title: "Server Stress Testing",
     caseId: "STRESS",
     rfcReferences: ["3.2.2"],
     description: "Server can handle many concurrent users",
@@ -2254,6 +2254,127 @@ var tests =
     ],
     postConditions: ["Server is operational"],
     testData: []
+  },
+  
+  "RGSTR-DE": 
+  {
+    inactive: true,
+    title: "Unique Email Registration Check",
+    caseId: "RGSTR-DE",
+    rfcReferences: ["3.1.3", "CRGSTR: Client Register"],
+    description: "Attempt to register with an existing email",
+    target: "Server, Client",
+    preConditions: ["JOHN is registered"],
+    dependencies: ["RGSTR-OK"],
+    steps: [
+      {
+        description: "Enter email",
+        data: "foo@bar.com",
+        expected: null
+      },
+      {
+        description: "Enter name",
+        data: "James Foo Bar",
+        expected: null
+      },
+      {
+        description: "Enter username",
+        data: "foobar2",
+        expected: null
+      },
+      {
+        description: "Enter password",
+        data: "passwordfoo",
+        expected: null
+      },
+      {
+        description: "Re-enter password",
+        data: "passwordfoo",
+        expected: null
+      },
+      {
+        description: "Click Register button",
+        data: "#1",
+        expected: "Registration error"
+      }
+    ],
+    postConditions: ["Registration failed"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CRGSTR\n{\n  "seqid": xxxx,\n  "email": "foo@bar.com",\n  "password": "passwordfoo",\n  "userid": "foobar2",\n  "name": "James Foo Bar"\n}',
+        response: 'SRVERR\n{\n  "seqid": xxxx\n}'
+      }
+    ]
+  },
+  
+  "CONREQ-SELF": 
+  {
+    inactive: true,
+    title: "Sending Contact Request To Self",
+    caseId: "CONREQ-SELF",
+    rfcReferences: ["2.1.3.3", "3.1.5", "4.1.3", "CCNREQ: Client Contact Request"],
+    description: "User cannot send a contact request to himself",
+    target: "Server",
+    preConditions: ["JOHN is logged in"],
+    dependencies: ["CONREQ-OK"],
+    steps: [
+      {
+        description: "As JOHN inject a contact request to JOHN (client may allow this)",
+        data: "#1",
+        expected: "Request is not sent"
+      },
+      {
+        description: "As JOHN wait for next heartbeat",
+        data: "#2",
+        expected: "No contact request from JOHN is received"
+      }
+    ],
+    postConditions: ["JOHN did not get a contact request from himself"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCNREQ\n{\n  "seqid": xxxx,\n  "userid": "foobar"\n}',
+        response: 'SRVERR\n{\n  "seqid": xxxx\n}'
+      },
+      {
+        id: "#2",
+        request: 'CHBEAT\n{\n  "seqid": yyyy\n}',
+        response: 'SRVROK\n{\n  "seqid": xxxx,\n  "contacts": [],\n  "inbox": [],\n  "requests": []\n}'
+      }
+    ]
+  },
+  
+  "CHTREQ-SELF": 
+  {
+    inactive: true,
+    title: "Sending A Chat Request To Self",
+    caseId: "CHTREQ-SELF",
+    rfcReferences: ["2.1.3.4", "4.1.6",  "CCCHRQ: Client-to-client Chat Request"],
+    description: "User cannot send a chat request to himself",
+    target: "Client",
+    preConditions: ["JOHN is logged in"],
+    dependencies: ["CHTREQ-OK"],
+    steps: [
+      {
+        description: "As JOHN inject a chat request to JOHN",
+        data: "#1",
+        expected: "Request is not sent"
+      },
+      {
+        description: "As JOHN wait",
+        data: "#2",
+        expected: "No chat request from JOHN is received"
+      }
+    ],
+    postConditions: ["JOHN did not get a chat request from himself"],
+    testData: [
+      {
+        id: "#1",
+        request: 'CCCHRQ\n{\n  "seqid": xxxx,\n  "userid": "foobar"\n}',
+        response: 'CCLERR\n{\n  "seqid": xxxx\n}'
+      }
+    ]
   }
 };
 

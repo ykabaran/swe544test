@@ -3,7 +3,12 @@ $(function() {
   var counter = 0;
   $.each(tests, function(key, value){
     value.title = (++counter)+". " + value.title;
-    var testItem = '<li class="menuTestCase menuItem" test-id="'+key+'"><a href="#" onClick="return false;">'+value.title+'</a></li>'
+    var testItem = $('<li class="menuTestCase menuItem" test-id="'+key+'"><a href="#" onClick="return false;">'+value.title+'</a></li>');
+    testItem.attr("test-id", key);
+    testItem.find("a").text(value.title);
+    if(value.inactive){
+      testItem.find("a").css("color", "gray");
+    }
     testCaseList.push(testItem);
   });
   $("#testCaseMenuSeparator").after(testCaseList);
